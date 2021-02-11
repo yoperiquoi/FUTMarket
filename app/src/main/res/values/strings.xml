@@ -2,4 +2,5 @@
     <string name="app_name">FUTMarket</string>
     <string name="futmarket">FutMarket</string>
     <string name="connexion">Connexion</string>
+    <string name="inscription">Inscription</string>
 </resources>

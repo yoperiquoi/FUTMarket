@@ -2,4 +2,5 @@
 <resources>
     <string name="futmarket">FutMarket</string>
     <string name="connexion">Connexion</string>
+    <string name="inscription">Inscription</string>
 </resources>
