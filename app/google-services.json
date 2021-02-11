@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "818919349037",
+    "firebase_url": "https://futmarket-d7fe0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "futmarket-d7fe0",
+    "storage_bucket": "futmarket-d7fe0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818919349037:android:a9fbb74c1b63fd73c111a4",
+        "android_client_info": {
+          "package_name": "com.example.futmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818919349037-beq0hbotovvrf0qai5lo69mmbaqgurcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQveOlLqtzv7MNFORuc1k5kd2duOQ0r-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818919349037-beq0hbotovvrf0qai5lo69mmbaqgurcj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
