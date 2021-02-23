@@ -3,4 +3,9 @@
     <string name="futmarket">FutMarket</string>
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
+    <string name="login">Login</string>
+    <string name="mdp">Mot de passe</string>
+    <string name="connecter">Se connecter</string>
+    <string name="inscrire">S\'inscrire</string>
+    <string name="_1">1</string>
 </resources>
