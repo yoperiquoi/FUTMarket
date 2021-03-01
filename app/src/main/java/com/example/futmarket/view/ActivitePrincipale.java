@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.futmarket.ActiviteConnexion;
-import com.example.futmarket.ActiviteInscription;
 import com.example.futmarket.R;
 
 public class ActivitePrincipale extends AppCompatActivity {

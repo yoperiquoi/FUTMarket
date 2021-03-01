@@ -3,4 +3,7 @@
     <string name="futmarket">FutMarket</string>
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
+    <string name="selection_mode">Selection mode</string>
+    <string name="market">Market</string>
+    <string name="pack">Pack</string>
 </resources>

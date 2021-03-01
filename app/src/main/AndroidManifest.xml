@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FUTMarket">
-        <activity android:name=".ActiviteInscription"></activity>
-        <activity android:name=".ActiviteConnexion" />
+        <activity android:name=".view.ActiviteMode"/>
+        <activity android:name=".view.ActiviteInscription" />
+        <activity android:name=".view.ActiviteConnexion" />
         <activity android:name=".view.ActivitePrincipale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
