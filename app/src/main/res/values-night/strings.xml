@@ -6,4 +6,6 @@
     <string name="selection_mode">Selection mode</string>
     <string name="market">Market</string>
     <string name="pack">Pack</string>
+    <string name="nompack">NomPack</string>
+    <string name="prix">Prix</string>
 </resources>

@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FUTMarket">
-        <activity android:name=".view.ActiviteMode"/>
-        <activity android:name=".view.ActiviteInscription" />
-        <activity android:name=".view.ActiviteConnexion" />
-        <activity android:name=".view.ActivitePrincipale">
+        <activity android:name=".view.OuverturePack"></activity>
+        <activity android:name=".view.SelectionPack">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.ActiviteMode" />
+        <activity android:name=".view.ActiviteInscription" />
+        <activity android:name=".view.ActiviteConnexion" />
+        <activity android:name=".view.ActivitePrincipale" />
 
         <meta-data
             android:name="preloaded_fonts"
