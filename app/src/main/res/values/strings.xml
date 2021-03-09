@@ -18,4 +18,7 @@
     <string name="description">Description</string>
     <string name="dejaUnCmp">Vous avez deja un compte? Connectez vous</string>
     <string name="deconnection">Deconnecter</string>
+    <string name="pseudo">Pseudonyme</string>
+    <string name="credits">Crédits</string>
+    <string name="nbCredits">NbCrédit</string>
 </resources>
