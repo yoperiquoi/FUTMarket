@@ -11,6 +11,7 @@
     <string name="selection_mode">Selection mode</string>
     <string name="market">Market</string>
     <string name="pack">Pack</string>
+    <string name="dejaUnCmp">Vous avez deja un compte? Se connectez vous</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

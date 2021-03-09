@@ -9,20 +9,22 @@
 
     <TextView
         android:id="@+id/Activite_Logo"
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginLeft="176dp"
+        android:layout_marginTop="91dp"
         android:layout_marginEnd="169dp"
         android:layout_marginRight="169dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="144dp"
         android:text="@string/inscription"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@id/loginTag"
+        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.346"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/loginTag"
@@ -54,7 +56,8 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/motDePasse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/mdpTag"
@@ -81,14 +84,14 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="320dp"
-        android:autoText="false"
         android:background="@color/white"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/inscription"
@@ -100,5 +103,18 @@
         android:text="@string/inscrire"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/motDePasse" />
+
+    <TextView
+        android:id="@+id/connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/dejaUnCmp"
+        android:textColor="#3F51B5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inscription"
+        android:onClick="connection"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
