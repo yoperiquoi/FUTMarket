@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.futmarket.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,10 +37,8 @@ public class ActiviteInscription extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(ActiviteInscription.this, ActiviteMode.class));
-            finish();
-        }
+        checkConnect();
+
         seInscrire();
     }
 
@@ -62,7 +62,7 @@ public class ActiviteInscription extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Toast.makeText(ActiviteInscription.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActiviteInscription.this,"pb"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -72,5 +72,13 @@ public class ActiviteInscription extends AppCompatActivity {
     public void connection(View view) {
         startActivity(new Intent(ActiviteInscription.this,ActiviteConnexion.class));
         finish();
+    }
+
+    public void checkConnect(){
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(mAuth.getCurrentUser() != null || account != null){
+            startActivity(new Intent(ActiviteInscription.this, ActiviteMode.class));
+            finish();
+        }
     }
 }

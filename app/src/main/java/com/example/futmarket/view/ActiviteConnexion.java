@@ -39,6 +39,7 @@ public class ActiviteConnexion extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         seConnecterEmail();
         seConnecterGoogle();
+
     }
 
     private void jouer(){
@@ -64,14 +65,9 @@ public class ActiviteConnexion extends AppCompatActivity {
     }
     private void seConnecterGoogle(){
         // Configure Google Sign In
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account != null){
-            startActivity(new Intent(getApplicationContext(),ActiviteMode.class));
-            finish();
-        };
+
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
