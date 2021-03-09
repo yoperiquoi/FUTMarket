@@ -1,4 +1,4 @@
-package com.example.futmarket.view.Adaptateur;
+package com.example.futmarket.view.adaptateur;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

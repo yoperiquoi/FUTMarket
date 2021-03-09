@@ -11,9 +11,10 @@ import android.util.Log;
 import com.example.futmarket.R;
 import com.example.futmarket.model.MarchePack;
 import com.example.futmarket.model.Stub;
-import com.example.futmarket.view.Adaptateur.AdaptateurMarche;
-import com.example.futmarket.view.Adaptateur.OnPackListener;
+import com.example.futmarket.view.adaptateur.AdaptateurMarche;
+import com.example.futmarket.view.adaptateur.OnPackListener;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,10 +45,16 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
 
     @Override
     public void OnClickPack(int position) {
-        Log.d(TAG, "OnClickPack: clicked" + position);
+        Log.d(TAG, "OnClickPack: clicked" + getFilesDir()+"/OuverturePack");
 
-        /*
         Intent intent = new Intent(this, OuverturePack.class);
+
+        File file = new File(getFilesDir()+"/OuverturePack");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(getFilesDir()+"/OuverturePack"))) {
             oos.writeObject(marchePack.getLesPacks().get(position));
         } catch (FileNotFoundException e) {
@@ -57,7 +64,7 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
         } ;
 
         startActivity(intent);
-        */
+
     }
 
 }

@@ -1,7 +1,6 @@
-package com.example.futmarket.view.Adaptateur;
+package com.example.futmarket.view.adaptateur;
 
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
