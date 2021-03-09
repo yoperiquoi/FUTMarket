@@ -3,7 +3,9 @@ package com.example.futmarket.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentContainerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.example.futmarket.R;
 
@@ -13,6 +15,7 @@ public class ActiviteMode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activite_mode);
+        selectionPack();
     }
 
     @Override
@@ -22,5 +25,12 @@ public class ActiviteMode extends AppCompatActivity {
                 .add(R.id.container,new InfosUtilisateur(),null).commit();
 
 
+    }
+    private void selectionPack(){
+        Button pack = findViewById(R.id.modePack);
+        pack.setOnClickListener(v ->{
+            startActivity(new Intent(getApplicationContext(),SelectionPack.class));
+            finish();
+        });
     }
 }

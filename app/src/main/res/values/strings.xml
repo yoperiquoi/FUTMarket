@@ -16,4 +16,6 @@
     <string name="nompack">NomPack</string>
     <string name="prix">Prix</string>
     <string name="description">Description</string>
+    <string name="dejaUnCmp">Vous avez deja un compte? Connectez vous</string>
+    <string name="deconnection">Deconnecter</string>
 </resources>
