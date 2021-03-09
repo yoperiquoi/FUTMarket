@@ -28,10 +28,10 @@ import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class ActiviteConnexion extends AppCompatActivity {
-    public static final int signInCode=10; //le sing in code
+
     private FirebaseAuth mAuth; // l'auuthentification avec le fire base
     private EditText mLogin, mPassword; // les champs de texte
-    private SignInButton signIn; // le bouton de google
+
 
     /**
      * la creation de l'activite
@@ -43,10 +43,10 @@ public class ActiviteConnexion extends AppCompatActivity {
         setContentView(R.layout.activite_connexion);
         mLogin = findViewById(R.id.login);
         mPassword = findViewById(R.id.motDePasse);
-        signIn= findViewById(R.id.signGoogle);
+
         mAuth = FirebaseAuth.getInstance();
         seConnecterEmail();
-        seConnecterGoogle();
+
 
     }
 
@@ -77,38 +77,5 @@ public class ActiviteConnexion extends AppCompatActivity {
         });
     }
 
-    /**
-     * pour se connecter avec un compte google
-     */
-    private void seConnecterGoogle(){
-        // Configure Google Sign In
 
-        GoogleSignInOptions gso = new GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("818919349037-beq0hbotovvrf0qai5lo69mmbaqgurcj.apps.googleusercontent.com")//on demande le toket du client d'authenthification
-                .requestEmail()//on demande l'email de l'utilisateur pour le connecter
-                .build(); // la creation de toutes les options pour se connecter a son compte google
-        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso); // on recupere l'utilisateur
-
-        signIn.setOnClickListener(v->{ // attente de clique sur le bouton
-            Intent signInIntent = mGoogleSignInClient.getSignInIntent();  //la recuperation de la fenetre de connexion
-            startActivityForResult(signInIntent, signInCode);
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == signInCode) {
-            Task<GoogleSignInAccount> signTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try{
-                GoogleSignInAccount account = signTask.getResult(ApiException.class);
-                AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
-                mAuth.signInWithCredential(authCredential).addOnCompleteListener(task -> jouer());
-
-            } catch (ApiException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

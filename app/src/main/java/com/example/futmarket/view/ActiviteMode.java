@@ -12,12 +12,11 @@ import com.example.futmarket.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ActiviteMode extends AppCompatActivity {
-    String name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activite_mode);
-        Log.d("TAG", "onCreate: "+name);
+
         selectionPack();
     }
 

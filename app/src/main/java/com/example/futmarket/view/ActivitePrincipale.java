@@ -15,10 +15,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivitePrincipale extends AppCompatActivity {
-
+    FirebaseAuth utilisateur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        utilisateur = FirebaseAuth.getInstance();
         setContentView(R.layout.activite_principale);
         allerVersInscription();
     }
@@ -32,9 +33,14 @@ public class ActivitePrincipale extends AppCompatActivity {
     }
 
     public void deconnection(View view) {
-        FirebaseAuth.getInstance().signOut();
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build();
-        GoogleSignIn.getClient(this, gso).signOut();
-        Toast.makeText(getApplicationContext(),"Deconncte",Toast.LENGTH_SHORT).show();
+        if(utilisateur.getCurrentUser() != null){
+            FirebaseAuth.getInstance().signOut();
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build();
+            GoogleSignIn.getClient(this, gso).signOut();
+            Toast.makeText(getApplicationContext(),"Deconncte",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Deconncte",Toast.LENGTH_SHORT).show();
+        }
     }
 }
