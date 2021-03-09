@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FUTMarket">
         <activity android:name=".view.OuverturePack"></activity>
-        <activity android:name=".view.SelectionPack">
+        <activity android:name=".view.ActivitePrincipale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
         <activity android:name=".view.ActiviteMode" />
         <activity android:name=".view.ActiviteInscription" />
         <activity android:name=".view.ActiviteConnexion" />
-        <activity android:name=".view.ActivitePrincipale" />
+        <activity android:name=".view.SelectionPack" />
 
         <meta-data
             android:name="preloaded_fonts"
