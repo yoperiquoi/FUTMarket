@@ -5,16 +5,18 @@ import androidx.fragment.app.FragmentContainerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.example.futmarket.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ActiviteMode extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activite_mode);
+
         selectionPack();
     }
 
@@ -28,9 +30,6 @@ public class ActiviteMode extends AppCompatActivity {
     }
     private void selectionPack(){
         Button pack = findViewById(R.id.modePack);
-        pack.setOnClickListener(v ->{
-            startActivity(new Intent(getApplicationContext(),SelectionPack.class));
-            finish();
-        });
+        pack.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),SelectionPack.class)));
     }
 }
