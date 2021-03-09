@@ -25,7 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ActiviteConnexion extends AppCompatActivity {
-    public static final int signInCode=111107;
+    public static final int signInCode=10;
     private FirebaseAuth mAuth;
     private EditText mLogin, mPassword;
     private SignInButton signIn;
@@ -85,16 +85,12 @@ public class ActiviteConnexion extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("toto",""+requestCode);
         if (requestCode == signInCode) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            jouer();
             try{
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-
-
+                jouer();
             } catch (ApiException e) {
-                Log.d("toto", "signInResult:failed code=" + e.getStatusCode());
                 e.printStackTrace();
             }
         }
