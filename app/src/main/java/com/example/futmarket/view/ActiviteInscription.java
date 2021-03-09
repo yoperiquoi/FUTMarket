@@ -62,7 +62,7 @@ public class ActiviteInscription extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Toast.makeText(ActiviteInscription.this,"pb"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActiviteInscription.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }
             });
 
