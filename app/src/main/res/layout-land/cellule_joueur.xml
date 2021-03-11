@@ -27,9 +27,9 @@
         android:layout_below="@+id/NomJoueur"
         android:layout_alignEnd="@+id/NomJoueur"
         android:layout_alignRight="@+id/NomJoueur"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginRight="63dp" />
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginRight="59dp" />
 
     <TextView
         android:id="@+id/PrixJoueur"
@@ -69,9 +69,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="241dp"
-        android:layout_marginRight="241dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginRight="161dp"
         tools:srcCompat="@tools:sample/avatars[1]" />
 
     <ImageView
@@ -84,7 +84,7 @@
         android:layout_alignParentRight="false"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="65dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="73dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="447dp"
         android:layout_marginRight="246dp" />
 </RelativeLayout>

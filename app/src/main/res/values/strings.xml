@@ -21,4 +21,11 @@
     <string name="pseudo">Pseudonyme</string>
     <string name="credits">Crédits</string>
     <string name="nbCredits">NbCrédit</string>
+    <string name="nomjoueur">NomJoueur</string>
+    <string name="overall">Overall</string>
+    <string name="ValeurPack">TextView</string>
+    <string name="euro"> €</string>
+    <string name="valeur">Valeur : </string>
+    <string name="note">Note Général : </string>
+    <string name="valeurPack">Valeur du pack : </string>
 </resources>

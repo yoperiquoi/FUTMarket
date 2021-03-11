@@ -1,4 +1,4 @@
-package com.example.futmarket.view.Adaptateur;
+package com.example.futmarket.view.adaptateur;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -33,6 +33,11 @@ public class AdaptateurMarche extends RecyclerView.Adapter {
         ((ViewHolderPack)holder).getNomPack().setText(lesPacks.get(position).getName());
         ((ViewHolderPack)holder).getPrix().setText(lesPacks.get(position).getPrix());
         ((ViewHolderPack)holder).getDescription().setText(lesPacks.get(position).getDescription());
+    }
+
+    public void refreshData(List<Pack> newPacks){
+        lesPacks = newPacks;
+        notifyDataSetChanged();
     }
 
     @Override

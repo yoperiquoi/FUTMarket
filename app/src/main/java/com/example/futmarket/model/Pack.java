@@ -1,6 +1,7 @@
 package com.example.futmarket.model;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Pack implements Serializable {
@@ -16,6 +17,13 @@ public class Pack implements Serializable {
         this.prix = prix;
         this.joueurs = joueurs;
         this.description=description;
+    }
+
+    public Pack(String name, Rarete rarete, Float prix, String description) {
+        this.name = name;
+        this.rarete = rarete;
+        this.prix = prix;
+        this.description = description;
     }
 
     public String getName() {
@@ -50,8 +58,13 @@ public class Pack implements Serializable {
         this.joueurs = joueurs;
     }
 
-
     public String getDescription() {
         return description;
+    }
+
+    public void generateJoueur(){
+        LinkedList<Joueur> newList = new LinkedList<Joueur>();
+
+
     }
 }
