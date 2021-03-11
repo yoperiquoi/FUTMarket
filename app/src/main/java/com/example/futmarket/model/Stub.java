@@ -8,7 +8,7 @@ public class Stub {
     public static MarchePack loadMarche(){
         MarchePack retour = new MarchePack();
         LinkedList<Joueur> joueurs= new LinkedList<>();
-        joueurs.add(new Joueur("Cristiano Ronaldo",35,"ST","https://cdn.sofifa.com/players/020/801/20_120.png","https://cdn.sofifa.com/teams/45/60.png",185,70,93,100000000,"https://cdn.sofifa.com/flags/pt.png",Rarete.Or));
+        joueurs.add(new Joueur());
         retour.addPack("Pack or rare",Rarete.Or,7500f,joueurs,"Contient 12 joueurs or");
         retour.addPack("Pack légendaire",Rarete.Legende,1000000f,joueurs,"Contient 12 joueurs or");
         retour.addPack("Pack argent",Rarete.Argent,2500f,joueurs,"Contient 12 joueurs or");

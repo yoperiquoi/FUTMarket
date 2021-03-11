@@ -3,13 +3,11 @@ package com.example.futmarket.view.adaptateur;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -17,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
-import com.example.futmarket.view.OuverturePack;
 
 
 import java.io.InputStream;

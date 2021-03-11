@@ -5,29 +5,32 @@ import java.io.Serializable;
 public class Joueur implements Serializable {
     private String name;
     private int age;
+    private int note;
     private String position;
     private String photo;
     private String club;
-    private int taille;
-    private int poids;
-    private int note;
-    private int prix;
     private String drapeau;
-    private Rarete rarete;
+    private String taille;
+    private String poids;
+    private int prix;
+    private String rarete;
 
-    public Joueur(String name, int age, String position, String photo, String club, int taille, int poids, int note, int prix, String drapeau, Rarete rarete) {
+
+    public Joueur(String name, int age, int note, String position, String photo, String club, String drapeau, String taille, String poids, int prix, String rarete) {
         this.name = name;
         this.age = age;
+        this.note = note;
         this.position = position;
         this.photo = photo;
         this.club = club;
+        this.drapeau = drapeau;
         this.taille = taille;
         this.poids = poids;
-        this.note = note;
         this.prix = prix;
-        this.drapeau = drapeau;
         this.rarete = rarete;
     }
+
+    public Joueur(){ }
 
     public String getName() {
         return name;
@@ -45,12 +48,28 @@ public class Joueur implements Serializable {
         this.age = age;
     }
 
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
     public String getPosition() {
         return position;
     }
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getClub() {
@@ -61,28 +80,28 @@ public class Joueur implements Serializable {
         this.club = club;
     }
 
-    public int getTaille() {
+    public String getDrapeau() {
+        return drapeau;
+    }
+
+    public void setDrapeau(String drapeau) {
+        this.drapeau = drapeau;
+    }
+
+    public String getTaille() {
         return taille;
     }
 
-    public void setTaille(int taille) {
+    public void setTaille(String taille) {
         this.taille = taille;
     }
 
-    public int getPoids() {
+    public String getPoids() {
         return poids;
     }
 
-    public void setPoids(int poids) {
+    public void setPoids(String poids) {
         this.poids = poids;
-    }
-
-    public int getNote() {
-        return note;
-    }
-
-    public void setNote(int note) {
-        this.note = note;
     }
 
     public int getPrix() {
@@ -93,27 +112,11 @@ public class Joueur implements Serializable {
         this.prix = prix;
     }
 
-    public String getDrapeau() {
-        return drapeau;
-    }
-
-    public void setDrapeau(String drapeau) {
-        this.drapeau = drapeau;
-    }
-
-    public Rarete getRarete() {
+    public String getRarete() {
         return rarete;
     }
 
-    public void setRarete(Rarete rarete) {
+    public void setRarete(String rarete) {
         this.rarete = rarete;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 }

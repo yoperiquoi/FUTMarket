@@ -35,6 +35,11 @@ public class AdaptateurMarche extends RecyclerView.Adapter {
         ((ViewHolderPack)holder).getDescription().setText(lesPacks.get(position).getDescription());
     }
 
+    public void refreshData(List<Pack> newPacks){
+        lesPacks = newPacks;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return lesPacks.size();
