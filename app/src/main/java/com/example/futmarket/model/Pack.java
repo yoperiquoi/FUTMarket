@@ -19,6 +19,13 @@ public class Pack implements Serializable {
         this.description=description;
     }
 
+    public Pack(String name, Rarete rarete, Float prix, String description) {
+        this.name = name;
+        this.rarete = rarete;
+        this.prix = prix;
+        this.description = description;
+    }
+
     public String getName() {
         return name;
     }
@@ -43,7 +50,7 @@ public class Pack implements Serializable {
         this.prix = prix;
     }
 
-    public LinkedList<Joueur> getJoueurs() {
+    public List<Joueur> getJoueurs() {
         return joueurs;
     }
 
@@ -51,8 +58,13 @@ public class Pack implements Serializable {
         this.joueurs = joueurs;
     }
 
-
     public String getDescription() {
         return description;
+    }
+
+    public void generateJoueur(){
+        LinkedList<Joueur> newList = new LinkedList<Joueur>();
+
+
     }
 }

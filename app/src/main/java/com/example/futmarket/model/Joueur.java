@@ -6,23 +6,27 @@ public class Joueur implements Serializable {
     private String name;
     private int age;
     private String position;
+    private String photo;
     private String club;
     private int taille;
     private int poids;
     private int note;
-    private Float prix;
+    private int prix;
+    private String drapeau;
     private Rarete rarete;
 
-    public Joueur(String name, int age, String position, String club, int taille, int poids, int note, Float prix,Rarete rarete) {
+    public Joueur(String name, int age, String position, String photo, String club, int taille, int poids, int note, int prix, String drapeau, Rarete rarete) {
         this.name = name;
         this.age = age;
         this.position = position;
+        this.photo = photo;
         this.club = club;
         this.taille = taille;
         this.poids = poids;
         this.note = note;
         this.prix = prix;
-        this.rarete=rarete;
+        this.drapeau = drapeau;
+        this.rarete = rarete;
     }
 
     public String getName() {
@@ -81,11 +85,35 @@ public class Joueur implements Serializable {
         this.note = note;
     }
 
-    public Float getPrix() {
+    public int getPrix() {
         return prix;
     }
 
-    public void setPrix(Float prix) {
+    public void setPrix(int prix) {
         this.prix = prix;
+    }
+
+    public String getDrapeau() {
+        return drapeau;
+    }
+
+    public void setDrapeau(String drapeau) {
+        this.drapeau = drapeau;
+    }
+
+    public Rarete getRarete() {
+        return rarete;
+    }
+
+    public void setRarete(Rarete rarete) {
+        this.rarete = rarete;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

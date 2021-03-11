@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
@@ -37,14 +38,26 @@ public class OuverturePack extends AppCompatActivity {
             classNotFoundException.printStackTrace();
         }
 
-        joueurs=pack.getJoueurs();
-        RecyclerView laListView = findViewById(R.id.listView);
+        joueurs= (LinkedList<Joueur>) pack.getJoueurs();
+        RecyclerView laListView = findViewById(R.id.listView2);
+
+        int valeurJoueur=0;
+
+        for (Joueur joueur : joueurs){
+            valeurJoueur+=joueur.getPrix();
+        }
+        ((TextView)findViewById(R.id.ValeurPack)).setText(getString(R.string.valeurPack)+Integer.toString(valeurJoueur)+getString(R.string.euro));
 
         laListView.setLayoutManager(new LinearLayoutManager(this));
-        laListView.setAdapter(new AdaptateurJoueur(joueurs,this));
+        laListView.setAdapter(new AdaptateurJoueur(joueurs,this.getApplicationContext()));
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container,new InfosUtilisateur(),null)
+                .commit();
+    }
 
 }

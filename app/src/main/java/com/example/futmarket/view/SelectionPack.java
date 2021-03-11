@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class SelectionPack extends AppCompatActivity implements OnPackListener {
-    private MarchePack marchePack = Stub.load();
+    private MarchePack marchePack = new MarchePack().generatePacks();
     private static final String TAG = "SelectionPack";
 
     @Override
