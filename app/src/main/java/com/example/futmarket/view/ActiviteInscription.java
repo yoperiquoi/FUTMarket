@@ -32,6 +32,7 @@ public class ActiviteInscription extends AppCompatActivity {
     private EditText mLogin, mPassword;
     private Button btn;
     TextView mConnect;
+
     private SignInButton signIn; // le bouton de google
     public static final int signInCode=10; //le sing in code
 

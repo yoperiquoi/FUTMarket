@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="292dp"
         android:layout_marginLeft="292dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="140dp"
         android:onClick="deconnection"
         android:text="@string/deconnection"
         app:layout_constraintStart_toStartOf="parent"

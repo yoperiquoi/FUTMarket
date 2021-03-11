@@ -39,13 +39,13 @@ public class ActiviteConnexion extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activite_connexion);
-        mLogin = findViewById(R.id.login);
-        mPassword = findViewById(R.id.motDePasse);
+        super.onCreate(savedInstanceState); //la creation de l'activite
+        setContentView(R.layout.activite_connexion); //recuperer le design de l'activite
+        mLogin = findViewById(R.id.login);// affectation du text
+        mPassword = findViewById(R.id.motDePasse); // le mot de passe
 
-        mAuth = FirebaseAuth.getInstance();
-        seConnecterEmail();
+        mAuth = FirebaseAuth.getInstance();// recuperation de l'instance d'authentification
+        seConnecterEmail(); // la connection via le mail
 
 
     }
@@ -66,7 +66,7 @@ public class ActiviteConnexion extends AppCompatActivity {
         connect.setOnClickListener(v-> { // activation on clique sur le bouton
             String email= mLogin.getText().toString(); //recuperation du texte
             String mdp= mPassword.getText().toString(); //recuperation du texte
-            mAuth.signInWithEmailAndPassword(email,mdp).addOnCompleteListener(task -> { //la connexion depuis l'email
+            mAuth.signInWithEmailAndPassword(email,mdp).addOnCompleteListener(task -> { //la connexion via l'email
                 if(task.isSuccessful()){
                    jouer();//on passe au choix des modes
                 }
@@ -76,6 +76,4 @@ public class ActiviteConnexion extends AppCompatActivity {
             });
         });
     }
-
-
 }
