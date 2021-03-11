@@ -10,4 +10,5 @@ public class Database {
         FirebaseDatabase database= FirebaseDatabase.getInstance();
         return database.getReference("Joueurs");
     }
+
 }

@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -15,18 +17,50 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
+import com.example.futmarket.model.Pack;
 
 
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AdaptateurJoueur extends RecyclerView.Adapter {
+public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable{
     private List<Joueur> lesJoueurs;
+    private List<Joueur> lesJoueursAll;
     private Context context;
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Joueur> filteredList = new LinkedList<>();
+
+            if (constraint.toString().isEmpty()){
+                filteredList.addAll(lesJoueursAll);
+            }else{
+                for(Joueur joueur : lesJoueursAll){
+                    if(joueur.getName().contains(constraint.toString().toLowerCase())){
+                        filteredList.add(joueur);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+
+            filterResults.values = filteredList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            lesJoueurs.clear();
+            lesJoueurs.addAll((Collection<? extends Joueur>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public AdaptateurJoueur(LinkedList<Joueur> joueurs, Context applicationContext) {
         this.lesJoueurs=joueurs;
+        this.lesJoueursAll = new LinkedList<>();
         context= applicationContext;
     }
 
@@ -39,6 +73,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        position++;
         ((ViewHolderJoueur)holder).getNomJoueur().setText(lesJoueurs.get(position).getName());
         ((ViewHolderJoueur)holder).getPrixJoueur().setText(context.getString(R.string.valeur)+(Integer.toString(lesJoueurs.get(position).getPrix()))+ context.getString(R.string.euro));
         ((ViewHolderJoueur)holder).getOverall().setText(context.getString(R.string.note)+(Integer.toString(lesJoueurs.get(position).getNote())));
@@ -49,12 +84,35 @@ public class AdaptateurJoueur extends RecyclerView.Adapter {
         new DownloadImageTask(((ViewHolderJoueur)holder).getDrapeau())
                 .execute(lesJoueurs.get(position).getDrapeau());
 
+        switch (lesJoueurs.get(position).getRarete()){
+            case "Bronze":
+                holder.itemView.setBackground(context.getResources().getDrawable(R.drawable.bronze));
+                break;
+            case "Argent":
+                holder.itemView.setBackground(context.getResources().getDrawable(R.drawable.argent));
+                break;
+            case "Or":
+                holder.itemView.setBackground(context.getResources().getDrawable(R.drawable.or));
+                break;
+            case "Legende":
+                holder.itemView.setBackground(context.getResources().getDrawable(R.drawable.legende));
+                break;
+        }
+
+
     }
 
     @Override
     public int getItemCount() {
         return lesJoueurs.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
@@ -70,6 +128,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter {
                 InputStream in = new java.net.URL(urldisplay).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
+                mIcon11 = BitmapFactory.decodeResource(context.getResources(), R.drawable.no_image);
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }
@@ -81,6 +140,10 @@ public class AdaptateurJoueur extends RecyclerView.Adapter {
         }
 
     
+    }
+    public void refreshData(List<Joueur> newJoueurs){
+        lesJoueurs = newJoueurs;
+        notifyDataSetChanged();
     }
 }
 
