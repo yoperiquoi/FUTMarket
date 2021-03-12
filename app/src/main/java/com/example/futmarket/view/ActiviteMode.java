@@ -12,14 +12,14 @@ import com.example.futmarket.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ActiviteMode extends AppCompatActivity {
-    FirebaseAuth utilisateur;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activite_mode);
-        utilisateur = FirebaseAuth.getInstance();
         selectionPack();
         selectionMarket();
+        mesjoueurs();
     }
 
     @Override
@@ -32,11 +32,20 @@ public class ActiviteMode extends AppCompatActivity {
     }
     private void selectionPack(){
         Button pack = findViewById(R.id.modePack);
-        pack.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),SelectionPack.class)));
+
+        pack.setOnClickListener(v -> {
+            Log.d("toto", "selectionPack: ");
+            startActivity(new Intent(getApplicationContext(),SelectionPack.class));
+        });
     }
 
     private void selectionMarket(){
         Button market = findViewById(R.id.modeMarket);
         market.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),ActiviteFiltre.class)));
+    }
+
+    private void mesjoueurs(){
+        Button joueurs = findViewById(R.id.joueurs);
+        joueurs.setOnClickListener(v->startActivity(new Intent(getApplicationContext(),MesJoueurs.class)));
     }
 }

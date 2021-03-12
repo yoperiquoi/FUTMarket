@@ -40,9 +40,9 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
         setContentView(R.layout.activite_selection_pack);
         RecyclerView laListView = findViewById(R.id.listView);
         progress = findViewById(R.id.progress);
-
+        Log.d("toto", "onCreate: ");
         laListView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AdaptateurMarche(new ArrayList(),this);
+        adapter = new AdaptateurMarche(new ArrayList<>(),this);
         laListView.setAdapter(adapter);
     }
 

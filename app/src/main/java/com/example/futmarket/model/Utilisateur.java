@@ -4,8 +4,9 @@ import java.util.List;
 
 public class Utilisateur {
     private String pseudo;
-    private int crédits;
+    private int credits;
     private List<Joueur> mesJoueurs;
+
 
 
 

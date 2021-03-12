@@ -28,4 +28,6 @@
     <string name="valeur">Valeur : </string>
     <string name="note">Note Général : </string>
     <string name="valeurPack">Valeur du pack : </string>
+    <string name="email">Email</string>
+    <string name="joueurs">Mes joueurs</string>
 </resources>

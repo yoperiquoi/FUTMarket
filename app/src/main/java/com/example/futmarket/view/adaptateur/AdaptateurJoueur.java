@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
-import com.example.futmarket.model.Pack;
 
 
 import java.io.InputStream;

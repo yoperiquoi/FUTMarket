@@ -33,9 +33,12 @@ public class MarchePack implements Serializable {
     }
 
     public MarchePack generatePacks(){
-        DatabaseReference reference = new Database().firebaseConnexion();
+        Database database = new Database();
+        DatabaseReference reference = database.firebaseConnexion();
+        Random random = new Random();
+        int i =random.nextInt(17126);
 
-        Task<DataSnapshot> task = reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        Task<DataSnapshot> task = reference.child(Integer.toString(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -62,8 +65,9 @@ public class MarchePack implements Serializable {
                     lesPacks.add(pack4);
 
                     listener.onPackGenerated();
+                    database.ajouterJoueur(var);
                 }
-                }
+            }
         });
         return null;
     }
