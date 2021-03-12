@@ -10,15 +10,20 @@
         android:id="@+id/NomJoueur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
         android:shadowColor="@color/black"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
         android:text="@string/nomjoueur"
         android:textColor="#FFFFFF"
-        android:textSize="40sp"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true"/>
+        android:textSize="40sp" />
 
     <ImageView
         android:id="@+id/ImageJoueur"

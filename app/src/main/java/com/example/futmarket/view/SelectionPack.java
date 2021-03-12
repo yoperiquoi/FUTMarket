@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SelectionPack extends AppCompatActivity implements OnPackListener {
@@ -40,7 +41,23 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
         RecyclerView laListView = findViewById(R.id.listView);
         progress = findViewById(R.id.progress);
 
-        marchePack.generatePacks();
+        laListView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new AdaptateurMarche(new ArrayList(),this);
+        laListView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(TAG, "OnResume");
+        super.onResume();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container,new InfosUtilisateur(),null).commit();
+
+        marchePack= new MarchePack();
+        adapter.refreshData(new LinkedList<>());
+
+        progress.setVisibility(View.VISIBLE);
+
         marchePack.listener = new MarchePack.OnMarketGeneratedListener() {
             @Override
             public void onPackGenerated() {
@@ -49,19 +66,7 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
                 progress.setVisibility(View.GONE);
             }
         };
-
-        laListView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AdaptateurMarche(new ArrayList(),this);
-        laListView.setAdapter(adapter);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container,new InfosUtilisateur(),null).commit();
-
-
+        marchePack.generatePacks();
     }
 
     @Override
@@ -82,7 +87,7 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } ;
+        };
 
         startActivity(intent);
 

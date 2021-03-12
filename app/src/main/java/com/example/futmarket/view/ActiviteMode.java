@@ -19,6 +19,7 @@ public class ActiviteMode extends AppCompatActivity {
         setContentView(R.layout.activite_mode);
         utilisateur = FirebaseAuth.getInstance();
         selectionPack();
+        selectionMarket();
     }
 
     @Override
@@ -32,5 +33,10 @@ public class ActiviteMode extends AppCompatActivity {
     private void selectionPack(){
         Button pack = findViewById(R.id.modePack);
         pack.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),SelectionPack.class)));
+    }
+
+    private void selectionMarket(){
+        Button market = findViewById(R.id.modeMarket);
+        market.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),ActiviteFiltre.class)));
     }
 }

@@ -1,6 +1,18 @@
 package com.example.futmarket.model;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.GenericTypeIndicator;
+
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Joueur implements Serializable {
     private String name;
@@ -119,4 +131,5 @@ public class Joueur implements Serializable {
     public void setRarete(String rarete) {
         this.rarete = rarete;
     }
+
 }
