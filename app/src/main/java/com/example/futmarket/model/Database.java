@@ -23,7 +23,6 @@ import java.util.List;
 
 public class Database {
     FirebaseDatabase database;
-   // HashMap<String, String> users = new HashMap<>();
     Authentification auth = new Authentification();
 
     public Database(){
@@ -41,7 +40,7 @@ public class Database {
     public void ajouterJoueur(Object obj){
 
         DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
-        userId.child("joueurs").setValue(obj);
+        userId.child("joueurs").push().setValue(obj);
 
     }
 

@@ -24,7 +24,7 @@
         <activity android:name=".view.ActiviteInscription" />
         <activity android:name=".view.ActiviteConnexion" />
         <activity android:name=".view.SelectionPack" />
-
+        <activity android:name=".view.MesJoueurs" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
