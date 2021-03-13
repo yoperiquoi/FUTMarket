@@ -26,7 +26,7 @@ public class MesJoueurs extends AppCompatActivity {
     private RecyclerView joueurs;
     private LinkedList<Joueur> list ;
     private Database db =new Database();
-    private DatabaseReference ref = db.getRef("joueurs");
+    private DatabaseReference ref = db.getRef("Users").child(db.getUser()).child("joueurs");
     private  AdaptateurJoueur adapter;
 
     @Override
@@ -43,7 +43,6 @@ public class MesJoueurs extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Joueur joueur = dataSnapshot.getValue(Joueur.class);
-                    Log.d("toto", "onDataChange: "+joueur.getClub());
                     list.add(joueur);
                 }
                 adapter.notifyDataSetChanged();

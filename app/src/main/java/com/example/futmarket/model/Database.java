@@ -37,9 +37,12 @@ public class Database {
     public DatabaseReference getRef(String s){
         return database.getReference(s);
     }
+    public String getUser(){
+        return auth.getCurrentUser().getUid();
+    }
     public void ajouterJoueur(Object obj){
 
-        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
+        DatabaseReference userId=database.getReference("Users").child(getUser());
         userId.child("joueurs").push().setValue(obj);
 
     }
