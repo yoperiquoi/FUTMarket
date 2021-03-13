@@ -146,7 +146,7 @@ public class ActiviteInscription extends AppCompatActivity {
                 GoogleSignInAccount account = signTask.getResult(ApiException.class);
                 AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
                 mAuth.signInWithCredential(authCredential).addOnCompleteListener(task ->{
-                    db.AjoutUser(mAuth.getCurrentUser().getDisplayName());
+                    db.AjouterGoogle(mAuth.getCurrentUser().getDisplayName());
                     jouer();
                 });
 

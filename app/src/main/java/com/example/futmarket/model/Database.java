@@ -29,6 +29,27 @@ public class Database {
         database= FirebaseDatabase.getInstance();
     }
 
+    public void AjouterGoogle(String login){
+        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
+        userId.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("toto", "onDataChange: "+snapshot.child("login").getValue());
+                if(login.equals(snapshot.child("login").getValue())){
+                    userId.child("login").setValue(login);
+                }
+                else{
+                    userId.child("login").setValue(login);
+                    userId.child("credit").setValue(1000000);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     public void AjoutUser(String login){
         DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
         userId.child("credit").setValue(1000000);
@@ -42,7 +63,6 @@ public class Database {
         return auth.getCurrentUser().getUid();
     }
     public void ajouterJoueur(Object obj){
-
         DatabaseReference userId=database.getReference("Users").child(getUser());
         userId.child("joueurs").push().setValue(obj);
 
