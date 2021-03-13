@@ -8,14 +8,55 @@
     android:background="@drawable/background_stade">
 
     <TextView
-        android:id="@+id/loginTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="102dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginBottom="27dp"
+        android:background="#ffffff"
+        android:text="@string/email"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Activite_Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="169dp"
+        android:layout_marginRight="169dp"
+        android:text="@string/inscription"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="17dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/loginTagInsc"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/loginTagInsc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginLeft="101dp"
         android:layout_marginEnd="280dp"
         android:layout_marginRight="280dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="17dp"
         android:background="#FFFFFF"
         android:text="@string/login"
         app:layout_constraintBottom_toTopOf="@+id/login"
@@ -29,32 +70,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginRight="101dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/motDePasse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/Activite_Logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginEnd="169dp"
-        android:layout_marginRight="169dp"
-        android:layout_marginBottom="48dp"
-        android:text="@string/inscription"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@id/loginTag"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintBottom_toTopOf="@+id/mdpTag"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -65,7 +85,7 @@
         android:layout_marginLeft="101dp"
         android:layout_marginEnd="225dp"
         android:layout_marginRight="225dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:background="#FFFFFF"
         android:text="@string/mdp"
         app:layout_constraintBottom_toTopOf="@+id/motDePasse"
@@ -81,34 +101,34 @@
         android:layout_marginLeft="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="132dp"
-        android:autoText="false"
+        android:layout_marginBottom="76dp"
         android:background="@color/white"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/inscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="416dp"
+        android:layout_marginLeft="416dp"
+        android:layout_marginBottom="56dp"
         android:text="@string/inscrire"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/motDePasse" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/connect"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="4dp"
         android:onClick="connection"
         android:text="@string/dejaUnCmp"
         android:textColor="#001DBD"
@@ -119,11 +139,11 @@
         android:id="@+id/signGoogle"
         android:layout_width="119dp"
         android:layout_height="46dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginBottom="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/connect"
+        app:layout_constraintStart_toEndOf="@+id/inscription"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

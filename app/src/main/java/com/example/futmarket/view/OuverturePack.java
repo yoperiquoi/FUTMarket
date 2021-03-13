@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.futmarket.R;
+import com.example.futmarket.model.Database;
 import com.example.futmarket.model.Joueur;
 import com.example.futmarket.model.Pack;
 import com.example.futmarket.view.adaptateur.AdaptateurJoueur;
@@ -21,6 +22,7 @@ import java.util.LinkedList;
 public class OuverturePack extends AppCompatActivity {
     private Pack pack;
     private LinkedList<Joueur> joueurs;
+    private Database db = new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,11 @@ public class OuverturePack extends AppCompatActivity {
         joueurs= (LinkedList<Joueur>) pack.getJoueurs();
         RecyclerView laListView = findViewById(R.id.listView2);
 
+
         int valeurJoueur=0;
 
         for (Joueur joueur : joueurs){
+            db.ajouterJoueur(joueur);
             valeurJoueur+=joueur.getPrix();
         }
         ((TextView)findViewById(R.id.ValeurPack)).setText(getString(R.string.valeurPack)+Integer.toString(valeurJoueur)+getString(R.string.euro));

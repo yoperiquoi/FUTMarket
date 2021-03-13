@@ -20,7 +20,7 @@ public class ManagerJoueur {
 
 
     public void getJoueurFromDatabase(){
-        DatabaseReference reference = new Database().firebaseConnexion();
+        DatabaseReference reference = new Database().getRef("Joueurs");
 
 
         Task<DataSnapshot> task = reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {

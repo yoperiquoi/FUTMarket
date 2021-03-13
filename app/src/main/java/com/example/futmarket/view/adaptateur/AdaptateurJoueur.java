@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
-import com.example.futmarket.model.Pack;
 
 
 import java.io.InputStream;
@@ -73,7 +72,6 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        position++;
         ((ViewHolderJoueur)holder).getNomJoueur().setText(lesJoueurs.get(position).getName());
         ((ViewHolderJoueur)holder).getPrixJoueur().setText(context.getString(R.string.valeur)+(Integer.toString(lesJoueurs.get(position).getPrix()))+ context.getString(R.string.euro));
         ((ViewHolderJoueur)holder).getOverall().setText(context.getString(R.string.note)+(Integer.toString(lesJoueurs.get(position).getNote())));

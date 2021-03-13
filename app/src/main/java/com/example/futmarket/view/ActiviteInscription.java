@@ -1,12 +1,10 @@
 package com.example.futmarket.view;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,24 +12,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.futmarket.R;
+import com.example.futmarket.model.Authentification;
+import com.example.futmarket.model.Database;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class ActiviteInscription extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private EditText mLogin, mPassword;
+    private Authentification user;
+    private EditText mLogin, mPassword, mEmail;
     private Button btn;
     TextView mConnect;
+    private Database db;
     private SignInButton signIn; // le bouton de google
     public static final int signInCode=10; //le sing in code
 
@@ -47,8 +47,10 @@ public class ActiviteInscription extends AppCompatActivity {
         mLogin = findViewById(R.id.login);
         mPassword = findViewById(R.id.motDePasse);
         mConnect = findViewById(R.id.connect);
+        mEmail = findViewById(R.id.email);
         mAuth = FirebaseAuth.getInstance();
-
+        user = new Authentification();
+        db = new Database();
 
         checkConnect();
 
@@ -66,15 +68,18 @@ public class ActiviteInscription extends AppCompatActivity {
         connect.setOnClickListener(v-> {
             String login =mLogin.getText().toString(); // on met le texte ecrit depuis le champ du texte dans un string
             String mdp =mPassword.getText().toString(); // on met le texte ecrit depuis le champ du texte dans un string
-            
-            if(login.isEmpty() && mdp.isEmpty()){ //on met l'erreur si login ou mot de passe sont vides
+            String email =mEmail.getText().toString(); // on met le texte ecrit depuis le champ du texte dans un string
+
+            if(login.isEmpty() && mdp.isEmpty() && email.isEmpty()){ //on met l'erreur si login ou mot de passe sont vides
                 mLogin.setError("L'email doit etre non vide");
                 mPassword.setError(" mdp doit etre non vide");
+                mEmail.setError(" email doit etre non vide");
                 return;
             }
-            
-            mAuth.createUserWithEmailAndPassword(login,mdp).addOnCompleteListener(task -> { //on cree l'utilisateur depuis son email et son mot de passe
+
+            mAuth.createUserWithEmailAndPassword(email,mdp).addOnCompleteListener(task -> { //on cree l'utilisateur depuis son email et son mot de passe
                 if(task.isSuccessful()){ //si l'utilisateur est bien cree on va sur l'activite de choix des modes
+                    db.AjoutUser(login);
                     startActivity(new Intent(ActiviteInscription.this, ActiviteMode.class));
                     finish();
                 }
@@ -108,7 +113,7 @@ public class ActiviteInscription extends AppCompatActivity {
      */
     public void checkConnect(){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if(mAuth.getCurrentUser() != null || account != null){
+        if(user.isConnected()){
             jouer();
         }
     }
@@ -140,9 +145,13 @@ public class ActiviteInscription extends AppCompatActivity {
             try{
                 GoogleSignInAccount account = signTask.getResult(ApiException.class);
                 AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
-                mAuth.signInWithCredential(authCredential).addOnCompleteListener(task -> jouer());
+                mAuth.signInWithCredential(authCredential).addOnCompleteListener(task ->{
+                    db.AjouterGoogle(mAuth.getCurrentUser().getDisplayName());
+                    jouer();
+                });
 
-            } catch (ApiException e) {
+            }
+            catch (ApiException e) {
                 e.printStackTrace();
             }
         }
