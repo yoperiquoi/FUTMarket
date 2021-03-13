@@ -29,14 +29,14 @@ public class Database {
     public Database(){
         database= FirebaseDatabase.getInstance();
     }
-    public DatabaseReference firebaseConnexion(){
-        return database.getReference("Joueurs");
-    }
 
     public void AjoutLogin(String login){
         DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
         userId.child("login").setValue(login);
 
+    }
+    public DatabaseReference getRef(String s){
+        return database.getReference(s);
     }
     public void ajouterJoueur(Object obj){
 
