@@ -29,8 +29,9 @@ public class Database {
         database= FirebaseDatabase.getInstance();
     }
 
-    public void AjoutLogin(String login){
+    public void AjoutUser(String login){
         DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
+        userId.child("credit").setValue(1000000);
         userId.child("login").setValue(login);
 
     }

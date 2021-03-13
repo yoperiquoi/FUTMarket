@@ -79,7 +79,7 @@ public class ActiviteInscription extends AppCompatActivity {
 
             mAuth.createUserWithEmailAndPassword(email,mdp).addOnCompleteListener(task -> { //on cree l'utilisateur depuis son email et son mot de passe
                 if(task.isSuccessful()){ //si l'utilisateur est bien cree on va sur l'activite de choix des modes
-                    db.AjoutLogin(login);
+                    db.AjoutUser(login);
                     startActivity(new Intent(ActiviteInscription.this, ActiviteMode.class));
                     finish();
                 }
@@ -146,7 +146,7 @@ public class ActiviteInscription extends AppCompatActivity {
                 GoogleSignInAccount account = signTask.getResult(ApiException.class);
                 AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
                 mAuth.signInWithCredential(authCredential).addOnCompleteListener(task ->{
-                    db.AjoutLogin(mAuth.getCurrentUser().getDisplayName());
+                    db.AjoutUser(mAuth.getCurrentUser().getDisplayName());
                     jouer();
                 });
 
