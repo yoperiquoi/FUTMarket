@@ -34,7 +34,6 @@ public class ActiviteMode extends AppCompatActivity {
         Button pack = findViewById(R.id.modePack);
 
         pack.setOnClickListener(v -> {
-            Log.d("toto", "selectionPack: ");
             startActivity(new Intent(getApplicationContext(),SelectionPack.class));
         });
     }

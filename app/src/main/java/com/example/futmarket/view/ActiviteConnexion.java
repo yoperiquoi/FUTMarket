@@ -51,8 +51,8 @@ public class ActiviteConnexion extends AppCompatActivity {
             String email= mEmail.getText().toString(); //recuperation du texte
             String mdp= mPassword.getText().toString(); //recuperation du texte
             if(email.isEmpty() && mdp.isEmpty()){
-                mPassword.setError(" mdp doit etre non vide");
-                mEmail.setError(" email doit etre non vide");
+                mPassword.setError("Le mot de passe ne doit être pas être vide vide");
+                mEmail.setError("Le mail ne doit être pas être vide vide");
                 return;
             }
             mAuth.signInWithEmailAndPassword(email,mdp).addOnCompleteListener(task -> { //la connexion via l'email
@@ -60,7 +60,7 @@ public class ActiviteConnexion extends AppCompatActivity {
                    jouer();//on passe au choix des modes
                 }
                 else {
-                    Toast.makeText(ActiviteConnexion.this,"Email ou Mot de pass ne sont pas correct",Toast.LENGTH_SHORT).show(); //sinon on affiche une notification en expliquant le probleme
+                    Toast.makeText(ActiviteConnexion.this,"L'Email ou le Mot de passe ne sont pas corrects",Toast.LENGTH_SHORT).show(); //sinon on affiche une notification en expliquant le probleme
                 }
             });
         });

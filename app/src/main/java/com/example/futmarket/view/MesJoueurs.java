@@ -1,8 +1,6 @@
 package com.example.futmarket.view;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,14 +17,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MesJoueurs extends AppCompatActivity {
     private RecyclerView joueurs;
     private LinkedList<Joueur> list ;
     private Database db =new Database();
-    private DatabaseReference ref = db.getRef("Users").child(db.getUser()).child("joueurs");
+    private DatabaseReference ref = db.getRef("Users").child(db.getUserId()).child("joueurs");
     private  AdaptateurJoueur adapter;
 
     @Override
@@ -55,7 +52,10 @@ public class MesJoueurs extends AppCompatActivity {
         });
     }
 
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container,new InfosUtilisateur(),null).commit();
+    }
 }

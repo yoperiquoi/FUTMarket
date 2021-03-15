@@ -9,25 +9,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/pseudo"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/credit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/credits"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/nbCredit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/nbCredits"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#FFFFFF" />
 </LinearLayout>

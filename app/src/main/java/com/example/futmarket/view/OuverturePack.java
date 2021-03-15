@@ -43,7 +43,6 @@ public class OuverturePack extends AppCompatActivity {
         joueurs= (LinkedList<Joueur>) pack.getJoueurs();
         RecyclerView laListView = findViewById(R.id.listView2);
 
-
         int valeurJoueur=0;
 
         for (Joueur joueur : joueurs){
