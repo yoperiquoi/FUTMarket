@@ -9,22 +9,24 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Authentification {
-    private FirebaseAuth mAuth;
+    private final FirebaseAuth mAuth;
     public Authentification(){
         mAuth= FirebaseAuth.getInstance();
+    }
+
+    public FirebaseUser getCurrentUser() {
+        return mAuth.getCurrentUser();
     }
 
     public void deconnect(){
         mAuth.signOut();
     }
 
-    public boolean isConnected(){
-        if(mAuth.getCurrentUser() != null)return true;
-        return false;
-    }
 
-    public FirebaseUser getCurrentUser() {
-        return mAuth.getCurrentUser();
+    public boolean isConnected(){ return getCurrentUser() != null; }
+
+    public String getName(){
+        return getCurrentUser().getDisplayName();
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.futmarket.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,10 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.futmarket.R;
+import com.example.futmarket.model.Authentification;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ActiviteConnexion extends AppCompatActivity {
-
     private FirebaseAuth mAuth; // l'auuthentification avec le fire base
     private EditText mEmail, mPassword; // les champs de texte
 
@@ -27,7 +28,6 @@ public class ActiviteConnexion extends AppCompatActivity {
         setContentView(R.layout.activite_connexion); //recuperer le design de l'activite
         mEmail = findViewById(R.id.email);// affectation du text
         mPassword = findViewById(R.id.motDePasse); // le mot de passe
-
         mAuth = FirebaseAuth.getInstance();// recuperation de l'instance d'authentification
         seConnecterEmail(); // la connection via le mail
 
@@ -38,7 +38,7 @@ public class ActiviteConnexion extends AppCompatActivity {
      * le passage a l'activite de choix des modes
      */
     private void jouer(){
-        startActivity(new Intent(ActiviteConnexion.this, ActiviteMode.class));
+        startActivity(new Intent(getApplicationContext(), ActiviteMode.class));
         finish();
     }
 
