@@ -69,7 +69,6 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
 
     @Override
     public void OnClickPack(int position) {
-        Log.d("toto", "OnClickPack: clicked" + getFilesDir()+"/OuverturePack");
 
         Intent intent = new Intent(this, OuverturePack.class);
 
