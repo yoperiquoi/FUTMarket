@@ -1,6 +1,8 @@
 package com.example.futmarket.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,6 +52,8 @@ public class MesJoueurs extends AppCompatActivity {
 
             }
         });
+
+        retour();
     }
 
     @Override
@@ -57,5 +61,12 @@ public class MesJoueurs extends AppCompatActivity {
         super.onResume();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container,new InfosUtilisateur(),null).commit();
+    }
+    public void retour() {
+        Button retour = findViewById(R.id.retour);
+        retour.setOnClickListener( v-> {
+            startActivity(new Intent(getApplicationContext(),ActiviteMode.class));
+            finish();
+        });
     }
 }

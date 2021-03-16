@@ -20,6 +20,7 @@ public class ActiviteMode extends AppCompatActivity {
         selectionPack();
         selectionMarket();
         mesjoueurs();
+
     }
 
     @Override
@@ -28,23 +29,29 @@ public class ActiviteMode extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container,new InfosUtilisateur(),null).commit();
 
-
     }
     private void selectionPack(){
         Button pack = findViewById(R.id.modePack);
 
         pack.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(),SelectionPack.class));
+            finish();
         });
     }
 
     private void selectionMarket(){
         Button market = findViewById(R.id.modeMarket);
-        market.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),ActiviteFiltre.class)));
+        market.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),ActiviteFiltre.class));
+            finish();
+        });
     }
 
     private void mesjoueurs(){
         Button joueurs = findViewById(R.id.joueurs);
-        joueurs.setOnClickListener(v->startActivity(new Intent(getApplicationContext(),MesJoueurs.class)));
+        joueurs.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(),MesJoueurs.class));
+            finish();
+        });
     }
 }

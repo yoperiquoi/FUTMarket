@@ -30,4 +30,5 @@
     <string name="valeurPack">Valeur du pack : </string>
     <string name="email">Email</string>
     <string name="joueurs">Mes joueurs</string>
+    <string name="retour">Retour</string>
 </resources>

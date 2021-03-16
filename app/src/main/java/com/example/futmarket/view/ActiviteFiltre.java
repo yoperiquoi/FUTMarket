@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 
@@ -43,6 +45,7 @@ public class ActiviteFiltre extends AppCompatActivity {
         laListView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdaptateurJoueur(new LinkedList<>(),getApplicationContext());
         laListView.setAdapter(adapter);
+        retour();
     }
 
     @Override
@@ -89,5 +92,13 @@ public class ActiviteFiltre extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void retour() {
+        Button retour = findViewById(R.id.retour);
+        retour.setOnClickListener( v-> {
+            startActivity(new Intent(getApplicationContext(),ActiviteMode.class));
+            finish();
+        });
     }
 }

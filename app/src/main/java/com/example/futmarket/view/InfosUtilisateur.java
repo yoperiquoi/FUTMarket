@@ -1,5 +1,6 @@
 package com.example.futmarket.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,7 @@ public class InfosUtilisateur extends Fragment {
         super.onResume();
         Database database = new Database();
         database.listener = new Database.OnUserLoaded() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void Userloaded() {
                 user = database.getUser();

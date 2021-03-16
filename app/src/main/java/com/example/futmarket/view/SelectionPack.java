@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.example.futmarket.R;
+import com.example.futmarket.model.Database;
 import com.example.futmarket.model.MarchePack;
 import com.example.futmarket.model.Pack;
 import com.example.futmarket.model.Stub;
+import com.example.futmarket.model.Utilisateur;
 import com.example.futmarket.view.adaptateur.AdaptateurMarche;
 import com.example.futmarket.view.adaptateur.OnPackListener;
 
@@ -29,7 +32,6 @@ import java.util.List;
 public class SelectionPack extends AppCompatActivity implements OnPackListener {
     private MarchePack marchePack = new MarchePack();
     private static final String TAG = "SelectionPack";
-
     private AdaptateurMarche adapter;
 
     private ProgressBar progress;
@@ -43,6 +45,8 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
         laListView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdaptateurMarche(new ArrayList<>(),this);
         laListView.setAdapter(adapter);
+
+        retour();
     }
 
     @Override
@@ -87,7 +91,15 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
         };
 
         startActivity(intent);
+        finish();
 
     }
 
+    public void retour() {
+        Button retour = findViewById(R.id.retour);
+        retour.setOnClickListener( v-> {
+            startActivity(new Intent(getApplicationContext(),ActiviteMode.class));
+            finish();
+        });
+    }
 }

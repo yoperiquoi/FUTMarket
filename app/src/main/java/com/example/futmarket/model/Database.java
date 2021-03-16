@@ -25,17 +25,34 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Database {
-    FirebaseDatabase database;
-    Authentification auth = new Authentification();
-    Utilisateur user;
+    private FirebaseDatabase database;
+    private Authentification auth = new Authentification();
+    private Utilisateur user= new Utilisateur();
     public OnUserLoaded listener;
+    private int prix;
 
     public Database(){
         database= FirebaseDatabase.getInstance();
     }
 
+    public int getPrix() {
+        return prix;
+    }
+
+    public void setPrix(int prix) {
+        this.prix = prix;
+
+    }
+
+    public void AjoutUser(String login){
+        DatabaseReference userId=database.getReference("Users").child(getUserId());
+        userId.child("credit").setValue(1000000);
+        userId.child("login").setValue(login);
+
+    }
+
     public void AjouterGoogle(String login){
-        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
+        DatabaseReference userId=database.getReference("Users").child(getUserId());
         userId.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -55,12 +72,7 @@ public class Database {
             }
         });
     }
-    public void AjoutUser(String login){
-        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
-        userId.child("credit").setValue(1000000);
-        userId.child("login").setValue(login);
 
-    }
     public DatabaseReference getRef(String s){
         return database.getReference(s);
     }
@@ -68,9 +80,7 @@ public class Database {
         return auth.getCurrentUser().getUid();
     }
     public void ajouterJoueur(Object obj){
-        DatabaseReference userId=database.getReference("Users").child(getUserId());
-        userId.child("joueurs").push().setValue(obj);
-
+       getRef("Users").child(getUserId()).child("joueurs").push().setValue(obj);
     }
 
     public Utilisateur getUser() {
@@ -78,8 +88,7 @@ public class Database {
     }
 
     public void fetchUser() {
-        DatabaseReference reference = new Database().getRef("Users");
-        Task<DataSnapshot> task = reference.child(getUserId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        Task<DataSnapshot> task = getRef("Users").child(getUserId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
