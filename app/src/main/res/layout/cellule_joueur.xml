@@ -17,12 +17,8 @@
         android:layout_marginTop="106dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
-        android:shadowColor="@color/black"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
+        style="@style/CustomText"
         android:text="@string/nomjoueur"
-        android:textColor="#FFFFFF"
         android:textSize="40sp" />
 
     <ImageView
@@ -42,14 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ImageJoueur"
         android:layout_marginTop="13dp"
-        android:gravity="center"
-        android:shadowColor="@color/black"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text="@string/prix"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp" />
+        style="@style/CustomText"
+        android:text="@string/prix" />
 
     <TextView
         android:id="@+id/Overall"
@@ -57,14 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/PrixJoueur"
         android:layout_marginTop="9dp"
-        android:gravity="center"
-        android:shadowColor="@color/black"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text="@string/overall"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        style="@style/CustomText"
+        android:text="@string/overall" />
 
     <ImageView
         android:id="@+id/DrapeauJoueur"

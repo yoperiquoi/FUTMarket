@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
+import com.example.futmarket.model.Joueur;
+import com.example.futmarket.view.ActiviteFiltre;
 
 public class ViewHolderJoueur extends RecyclerView.ViewHolder {
     private TextView nomJoueur;
@@ -28,6 +30,7 @@ public class ViewHolderJoueur extends RecyclerView.ViewHolder {
         drapeau=itemView.findViewById(R.id.DrapeauJoueur);
         logoClub=itemView.findViewById(R.id.ClubJoueur);
         photo=itemView.findViewById(R.id.ImageJoueur);
+
     }
 
     public TextView getNomJoueur() {
@@ -52,5 +55,11 @@ public class ViewHolderJoueur extends RecyclerView.ViewHolder {
 
     public ImageView getPhoto() {
         return photo;
+    }
+
+    public void setJoueurCourant(Joueur joueurCourant){
+        photo.setOnClickListener(v -> {
+            ((ActiviteFiltre) (nomJoueur.getContext())).setJoueurEnCours(joueurCourant);
+        });
     }
 }

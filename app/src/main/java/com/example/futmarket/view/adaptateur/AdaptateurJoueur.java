@@ -72,6 +72,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ((ViewHolderJoueur)holder).setJoueurCourant(lesJoueurs.get(position));
         ((ViewHolderJoueur)holder).getNomJoueur().setText(lesJoueurs.get(position).getName());
         ((ViewHolderJoueur)holder).getPrixJoueur().setText(context.getString(R.string.valeur)+(Integer.toString(lesJoueurs.get(position).getPrix()))+ context.getString(R.string.euro));
         ((ViewHolderJoueur)holder).getOverall().setText(context.getString(R.string.note)+(Integer.toString(lesJoueurs.get(position).getNote())));
@@ -96,8 +97,6 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
                 holder.itemView.setBackground(context.getResources().getDrawable(R.drawable.legende));
                 break;
         }
-
-
     }
 
     @Override
@@ -136,9 +135,8 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
-
-    
     }
+
     public void refreshData(List<Joueur> newJoueurs){
         lesJoueurs = newJoueurs;
         notifyDataSetChanged();

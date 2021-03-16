@@ -8,16 +8,12 @@
 
     <TextView
         android:id="@+id/NomPack"
+        style="@style/CustomText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
         android:layout_gravity="center"
-        android:shadowColor="@color/black"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:textColor="#FFFFFF"
-        android:text="@string/nompack" />
+        android:text="@string/nompack"
+        android:textSize="40sp" />
 
     <ImageView
         android:id="@+id/ImagePack"
@@ -29,25 +25,13 @@
         android:id="@+id/PrixPack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:shadowColor="@color/black"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:gravity="center"
-        android:textSize="25sp"
+        style="@style/CustomText"
         android:text="@string/prix" />
     <TextView
         android:id="@+id/DescriptionPack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:shadowColor="@color/black"
-        android:textSize="20sp"
-        android:gravity="center"
+        style="@style/CustomText"
         android:text="@string/description" />
 
 

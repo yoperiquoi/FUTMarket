@@ -30,4 +30,9 @@
     <string name="valeurPack">Valeur du pack : </string>
     <string name="email">Email</string>
     <string name="joueurs">Mes joueurs</string>
+    <string name="position">Position</string>
+    <string name="age">Age</string>
+    <string name="taille">1m80</string>
+    <string name="poid">80kg</string>
+    <string name="acheter">Acheter</string>
 </resources>

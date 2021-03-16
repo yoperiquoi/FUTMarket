@@ -19,6 +19,7 @@
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
+        style="@style/CustomText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

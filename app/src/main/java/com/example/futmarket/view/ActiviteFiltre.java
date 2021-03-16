@@ -1,8 +1,10 @@
 package com.example.futmarket.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,9 +29,8 @@ import java.util.List;
 public class ActiviteFiltre extends AppCompatActivity {
     ManagerJoueur manager;
     List<Joueur> lesJoueurs ;
-
+    private Joueur joueurEnCours;
     private AdaptateurJoueur adapter;
-
     private ProgressBar progress;
 
     @Override
@@ -39,6 +40,7 @@ public class ActiviteFiltre extends AppCompatActivity {
 
         RecyclerView laListView = findViewById(R.id.listView3);
         progress = findViewById(R.id.progress2);
+
 
         laListView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdaptateurJoueur(new LinkedList<>(),getApplicationContext());
@@ -90,4 +92,25 @@ public class ActiviteFiltre extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
+
+    public Joueur getJoueurEnCours() {
+        return joueurEnCours;
+    }
+
+    public void setJoueurEnCours(Joueur joueurEnCours) {
+        if(this.joueurEnCours != joueurEnCours){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack("master")
+                    .replace(R.id.listView3,DetailsJoueurAchat.class,null)
+                    .commit();
+
+
+            //Afficher le détail de mon Master
+            this.joueurEnCours = joueurEnCours;
+        }
+
+    }
+
 }
