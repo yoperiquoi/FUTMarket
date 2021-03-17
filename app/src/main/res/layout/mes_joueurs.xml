@@ -12,7 +12,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="20dp"></androidx.fragment.app.FragmentContainerView>
+        android:layout_height="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lesJoueurs"

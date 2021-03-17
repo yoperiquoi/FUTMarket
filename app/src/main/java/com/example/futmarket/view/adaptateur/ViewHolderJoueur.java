@@ -13,6 +13,9 @@ import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
 import com.example.futmarket.view.ActiviteFiltre;
 
+/**
+ * Classe définissant l'affichage d'un joueur
+ */
 public class ViewHolderJoueur extends RecyclerView.ViewHolder {
     private TextView nomJoueur;
     private TextView prixJoueur;
@@ -57,9 +60,17 @@ public class ViewHolderJoueur extends RecyclerView.ViewHolder {
         return photo;
     }
 
+    /**
+     * Permet le clic sur la photo pour accéder au détails
+     * @param joueurCourant joueur associé à la photo
+     */
     public void setJoueurCourant(Joueur joueurCourant){
-        photo.setOnClickListener(v -> {
-            ((ActiviteFiltre) (nomJoueur.getContext())).setJoueurEnCours(joueurCourant);
-        });
+        if (nomJoueur.getContext().getClass() == ActiviteFiltre.class) {
+            photo.setOnClickListener(v -> {
+                ((ActiviteFiltre) (nomJoueur.getContext())).setJoueurEnCours(joueurCourant);
+            });
+        }
     }
+
+
 }

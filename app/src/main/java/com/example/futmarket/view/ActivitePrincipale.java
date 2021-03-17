@@ -15,6 +15,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Activité affiché au démarrage de l'application
+ */
 public class ActivitePrincipale extends AppCompatActivity {
     Authentification utilisateur; // variable de Firebase
 
@@ -47,10 +50,10 @@ public class ActivitePrincipale extends AppCompatActivity {
             utilisateur.deconnect();// on se déconnecte de firebase
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build();
             GoogleSignIn.getClient(this, gso).signOut();//on se deconnecte du google
-            Toast.makeText(getApplicationContext(),"Déconnecté",Toast.LENGTH_SHORT).show(); //ca fait un notification que c'est deconnecté
+            Toast.makeText(getApplicationContext(), getString(R.string.deconnecte),Toast.LENGTH_SHORT).show(); //ca fait un notification que c'est deconnecté
         }
         else{//sinon
-            Toast.makeText(getApplicationContext(),"Vous n'êtes pas connecté",Toast.LENGTH_SHORT).show();//ca fait un pop up comme quoi nous n'étions pas connecté
+            Toast.makeText(getApplicationContext(), getString(R.string.NonConnecte),Toast.LENGTH_SHORT).show();//ca fait un pop up comme quoi nous n'étions pas connecté
         }
     }
 }

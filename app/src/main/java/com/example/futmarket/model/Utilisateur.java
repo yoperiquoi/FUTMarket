@@ -3,6 +3,9 @@ package com.example.futmarket.model;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Classe définissant un utilisateur de l'application
+ */
 public class Utilisateur {
     private String login;
     private int credit;

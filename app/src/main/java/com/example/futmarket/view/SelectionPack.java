@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe définissant l'affichage du marché de pack
+ */
 public class SelectionPack extends AppCompatActivity implements OnPackListener {
     private MarchePack marchePack = new MarchePack();
     private static final String TAG = "SelectionPack";

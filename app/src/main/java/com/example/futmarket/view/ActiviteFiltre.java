@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe reponsable de l'affichage du marché de joueur
+ */
 public class ActiviteFiltre extends AppCompatActivity {
     ManagerJoueur manager;
     List<Joueur> lesJoueurs ;
@@ -93,10 +96,18 @@ public class ActiviteFiltre extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Retourne le joueur en cours
+     * @return joueur en cours
+     */
     public Joueur getJoueurEnCours() {
         return joueurEnCours;
     }
 
+    /**
+     * Défini le joueur en cours
+     * @param joueurEnCours joueur en cours
+     */
     public void setJoueurEnCours(Joueur joueurEnCours) {
         if(this.joueurEnCours != joueurEnCours){
             getSupportFragmentManager()
@@ -105,11 +116,8 @@ public class ActiviteFiltre extends AppCompatActivity {
                     .addToBackStack("master")
                     .replace(R.id.listView3,DetailsJoueurAchat.class,null)
                     .commit();
-
-
-            //Afficher le détail de mon Master
-            this.joueurEnCours = joueurEnCours;
         }
+        this.joueurEnCours = joueurEnCours;
 
     }
 

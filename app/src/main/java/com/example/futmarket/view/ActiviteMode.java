@@ -11,6 +11,9 @@ import android.widget.Button;
 import com.example.futmarket.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Classe permettant de sélectionner un mode
+ */
 public class ActiviteMode extends AppCompatActivity {
 
     @Override
@@ -30,6 +33,10 @@ public class ActiviteMode extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Permet de se diriger vers le marché de packs
+     */
     private void selectionPack(){
         Button pack = findViewById(R.id.modePack);
 
@@ -38,11 +45,17 @@ public class ActiviteMode extends AppCompatActivity {
         });
     }
 
+    /**
+     * Permet de se diriger vers le marché des joueurs
+     */
     private void selectionMarket(){
         Button market = findViewById(R.id.modeMarket);
         market.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),ActiviteFiltre.class)));
     }
 
+    /**
+     * Permet de se diriger vers l'afficage de ces joueurs
+     */
     private void mesjoueurs(){
         Button joueurs = findViewById(R.id.joueurs);
         joueurs.setOnClickListener(v->startActivity(new Intent(getApplicationContext(),MesJoueurs.class)));

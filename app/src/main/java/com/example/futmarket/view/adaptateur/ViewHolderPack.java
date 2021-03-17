@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
 
+/**
+ * Classe définissant l'affichage d'un pack
+ */
 public class ViewHolderPack extends RecyclerView.ViewHolder implements View.OnClickListener {
     private TextView nomPack;
     private TextView prix;

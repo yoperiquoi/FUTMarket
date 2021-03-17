@@ -14,6 +14,9 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe définisant un joueur de foot
+ */
 public class Joueur implements Serializable {
     private String name;
     private int age;

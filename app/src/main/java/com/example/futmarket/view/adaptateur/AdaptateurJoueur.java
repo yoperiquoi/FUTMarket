@@ -24,6 +24,9 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Adapteur permettant l'affichage d'un joueur
+ */
 public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable{
     private List<Joueur> lesJoueurs;
     private List<Joueur> lesJoueursAll;
@@ -110,7 +113,9 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
     }
 
 
-
+    /**
+     * Classe interne permettant le téléchargement d'image à partir d'une URL
+     */
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
@@ -137,6 +142,10 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
         }
     }
 
+    /**
+     * Permet de notifier la liste d'un changement de données
+     * @param newJoueurs nouvelle liste
+     */
     public void refreshData(List<Joueur> newJoueurs){
         lesJoueurs = newJoueurs;
         notifyDataSetChanged();

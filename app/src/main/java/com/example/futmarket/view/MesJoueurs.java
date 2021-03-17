@@ -19,6 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.LinkedList;
 
+/**
+ * Classe définissant l'affichage des joueurs possédé par l'utilisateur
+ */
 public class MesJoueurs extends AppCompatActivity {
     private RecyclerView joueurs;
     private LinkedList<Joueur> list ;

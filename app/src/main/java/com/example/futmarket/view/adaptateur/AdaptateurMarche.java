@@ -12,6 +12,9 @@ import com.example.futmarket.model.Pack;
 
 import java.util.List;
 
+/**
+ * Classe permettant l'affichage des packs
+ */
 public class AdaptateurMarche extends RecyclerView.Adapter {
     private List<Pack> lesPacks;
     private OnPackListener onPackListener;
@@ -35,6 +38,10 @@ public class AdaptateurMarche extends RecyclerView.Adapter {
         ((ViewHolderPack)holder).getDescription().setText(lesPacks.get(position).getDescription());
     }
 
+    /**
+     * Permet de notifier la liste d'un changement de données
+     * @param newPacks nouvelle liste
+     */
     public void refreshData(List<Pack> newPacks){
         lesPacks = newPacks;
         notifyDataSetChanged();

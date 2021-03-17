@@ -15,11 +15,17 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe permettant d'assurer la récupération des joueurs
+ */
 public class ManagerJoueur {
     private List<Joueur> lesJoueurs;
     public MarchePack.OnMarketGeneratedListener listener;
 
 
+    /**
+     * Permet de récupérer les joueurs depuis la BDD
+     */
     public void getJoueurFromDatabase(){
         DatabaseReference reference = new Database().getRef("Joueurs");
 
@@ -40,6 +46,10 @@ public class ManagerJoueur {
 
     }
 
+    /**
+     * Permet de récupérer les joueurs
+     * @return les joueurs
+     */
     public List<Joueur> getLesJoueurs() {
         return lesJoueurs;
     }

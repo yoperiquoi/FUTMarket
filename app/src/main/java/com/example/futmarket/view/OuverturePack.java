@@ -19,6 +19,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.LinkedList;
 
+/**
+ * Classe définissant l'affichage du pack ouvert
+ */
 public class OuverturePack extends AppCompatActivity {
     private Pack pack;
     private LinkedList<Joueur> joueurs;

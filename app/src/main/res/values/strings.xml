@@ -35,4 +35,16 @@
     <string name="taille">1m80</string>
     <string name="poid">80kg</string>
     <string name="acheter">Acheter</string>
+    <string name="crediter">crédits ?</string>
+    <string name="ValiderAchat">Valider achat pour</string>
+    <string name="valider">Valider</string>
+    <string name="Annuler">Annuler</string>
+    <string name="mdpInvalide">Le mot de passe ne doit être pas être vide vide</string>
+    <string name="emailInvalide">Le mail ne doit être pas être vide vide</string>
+    <string name="ErreurMdpEmail">L\'Email ou le Mot de passe ne sont pas corrects</string>
+    <string name="EmailVide">L\'email doit être non vide</string>
+    <string name="MdpVide">Mdp doit être non vide</string>
+    <string name="LoginVide">Le login ne doit pas être vide</string>
+    <string name="deconnecte">Déconnecté</string>
+    <string name="NonConnecte">Vous n\'êtes pas connecté</string>
 </resources>

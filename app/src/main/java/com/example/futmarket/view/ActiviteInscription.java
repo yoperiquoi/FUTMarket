@@ -25,6 +25,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+/**
+ * Classe responsable de l'inscription d'un joueur
+ */
 public class ActiviteInscription extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Authentification user;
@@ -71,9 +74,9 @@ public class ActiviteInscription extends AppCompatActivity {
             String email =mEmail.getText().toString(); // on met le texte ecrit depuis le champ du texte dans un string
 
             if(login.isEmpty() && mdp.isEmpty() && email.isEmpty()){ //on met l'erreur si login ou mot de passe sont vides
-                mLogin.setError("L'email doit etre non vide");
-                mPassword.setError(" mdp doit etre non vide");
-                mEmail.setError(" email doit etre non vide");
+                mLogin.setError(getString(R.string.LoginVide));
+                mPassword.setError(getString(R.string.MdpVide));
+                mEmail.setError(getString(R.string.EmailVide));
                 return;
             }
 

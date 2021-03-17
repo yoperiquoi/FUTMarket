@@ -25,6 +25,9 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+/**
+ * Classe définissant l'affichage des infos des utilisateurs
+ */
 public class InfosUtilisateur extends Fragment {
     Utilisateur user;
 

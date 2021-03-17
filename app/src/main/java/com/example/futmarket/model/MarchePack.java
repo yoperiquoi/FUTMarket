@@ -1,10 +1,8 @@
 package com.example.futmarket.model;
-import android.app.job.JobServiceEngine;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.GenericTypeIndicator;
@@ -13,17 +11,30 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
+
+/**
+ * Classe définisant le marché des packs
+ */
 public class MarchePack implements Serializable {
     private List<Pack> lesPacks = new ArrayList<>();
     public OnMarketGeneratedListener listener;
-    public List<Pack> getLesPacks(){
-        return  Collections.unmodifiableList(lesPacks);
-    }
+
+    /**
+     * Méthode permettant d'ajouter un pack dans le marché
+     * @param name nom du pack
+     * @param rarete rarete
+     * @param prix prix
+     * @param joueurs joueurs présent dans le pack
+     * @param description description du pack
+     */
     public void addPack(String name, Rarete rarete, Float prix,List<Joueur> joueurs,String description){
         lesPacks.add(new Pack(name,rarete,prix,joueurs,description));
     }
-    public MarchePack generatePacks(){
+
+    /**
+     * Permet de générer les packs
+     */
+    public void generatePacks(){
         DatabaseReference reference = new Database().getRef("Joueurs");
         Task<DataSnapshot> task = reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -50,9 +61,16 @@ public class MarchePack implements Serializable {
                 }
             }
         });
-        return null;
     }
+
+    /**
+     * Permet d'assurer que les packs sont chargé
+     */
     public interface OnMarketGeneratedListener {
         void onPackGenerated();
+    }
+
+    public List<Pack> getLesPacks(){
+        return  Collections.unmodifiableList(lesPacks);
     }
 }

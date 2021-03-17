@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Classe définissant un pack
+ */
 public class Pack implements Serializable {
     private String name;
     private Rarete rarete;
@@ -65,6 +68,10 @@ public class Pack implements Serializable {
         return description;
     }
 
+    /**
+     * Permet de générer des joueurs aléatoire à partir de la liste de tout les joueurs
+     * @param joueurs tout les joueurs
+     */
     public void generatePack(List<Joueur> joueurs){
         Random random = new Random();
         this.joueurs= new LinkedList<>();

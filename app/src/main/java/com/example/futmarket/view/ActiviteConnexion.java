@@ -13,6 +13,9 @@ import com.example.futmarket.R;
 import com.example.futmarket.model.Authentification;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Classe responsable de la connexion
+ */
 public class ActiviteConnexion extends AppCompatActivity {
     private FirebaseAuth mAuth; // l'auuthentification avec le fire base
     private EditText mEmail, mPassword; // les champs de texte
@@ -51,8 +54,8 @@ public class ActiviteConnexion extends AppCompatActivity {
             String email= mEmail.getText().toString(); //recuperation du texte
             String mdp= mPassword.getText().toString(); //recuperation du texte
             if(email.isEmpty() && mdp.isEmpty()){
-                mPassword.setError("Le mot de passe ne doit être pas être vide vide");
-                mEmail.setError("Le mail ne doit être pas être vide vide");
+                mPassword.setError(getString(R.string.mdpInvalide));
+                mEmail.setError(getString(R.string.emailInvalide));
                 return;
             }
             mAuth.signInWithEmailAndPassword(email,mdp).addOnCompleteListener(task -> { //la connexion via l'email
@@ -60,7 +63,7 @@ public class ActiviteConnexion extends AppCompatActivity {
                    jouer();//on passe au choix des modes
                 }
                 else {
-                    Toast.makeText(ActiviteConnexion.this,"L'Email ou le Mot de passe ne sont pas corrects",Toast.LENGTH_SHORT).show(); //sinon on affiche une notification en expliquant le probleme
+                    Toast.makeText(ActiviteConnexion.this, getString(R.string.ErreurMdpEmail),Toast.LENGTH_SHORT).show(); //sinon on affiche une notification en expliquant le probleme
                 }
             });
         });

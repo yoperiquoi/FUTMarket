@@ -33,4 +33,8 @@
     <string name="taille">1m80</string>
     <string name="poid">80kg</string>
     <string name="acheter">Acheter</string>
+    <string name="crediter">crédits ?</string>
+    <string name="valider">Valider</string>
+    <string name="Annuler">Annuler</string>
+    <string name="mdpInvalide">Le mot de passe ne doit être pas être vide vide</string>
 </resources>

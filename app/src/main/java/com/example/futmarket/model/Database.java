@@ -23,17 +23,29 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * Classe responsable des intéraction avec la base de données
+ */
 public class Database {
     FirebaseDatabase database;
     Authentification auth = new Authentification();
     Utilisateur user;
+
+    /**
+     * Listener permettant de savoir quand l'utilisateur est chargé
+     */
     public OnUserLoaded listener;
 
     public Database(){
         database= FirebaseDatabase.getInstance();
     }
 
+    /**
+     * Permet d'ajouter un utilisateur se connectant via google
+     * @param login login de l'utilisateur
+     */
     public void AjouterGoogle(String login){
         DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
         userId.addValueEventListener(new ValueEventListener() {
@@ -55,28 +67,69 @@ public class Database {
             }
         });
     }
+
+    /**
+     * Permet d'ajouter un utilisateur dans la bdd
+     * @param login login de l'utilisateur
+     */
     public void AjoutUser(String login){
         DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
         userId.child("credit").setValue(1000000);
         userId.child("login").setValue(login);
 
     }
+
+    /**
+     * Permet de récupérer la référence de la bdd
+     * @param s référence à récupérer
+     * @return la référence
+     */
     public DatabaseReference getRef(String s){
         return database.getReference(s);
     }
+
+    /**
+     * Permet de récupérer l'id de l'utilisateur
+     * @return id de l'utilisateur
+     */
     public String getUserId(){
         return auth.getCurrentUser().getUid();
     }
+
+    /**
+     * Permet d'ajouter un joueur lors de l'ouverture un pack
+     * @param obj joueur à ajouter
+     */
     public void ajouterJoueur(Object obj){
         DatabaseReference userId=database.getReference("Users").child(getUserId());
         userId.child("joueurs").push().setValue(obj);
-
     }
 
+    /**
+     * Permet de acheter un joueur
+     * @param obj joueur à acheter
+     */
+    public void acheterJoueur(Object obj){
+        ajouterJoueur(obj);
+        int credits = getUser().getCredit() - ((Joueur)obj).getPrix() ;
+        Utilisateur user = getUser();
+        user.setCredit(credits);
+        Map<String,Object> map = new HashMap<>();
+        map.put(getUserId(),user);
+        database.getReference("Users").updateChildren(map);
+    }
+
+    /**
+     * Récupére l'utilisateur courant
+     * @return utilisateur
+     */
     public Utilisateur getUser() {
        return user;
     }
 
+    /**
+     * Récupére l'utilisateur dans la BDD et le stocke dans le métier
+     */
     public void fetchUser() {
         DatabaseReference reference = new Database().getRef("Users");
         Task<DataSnapshot> task = reference.child(getUserId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -94,6 +147,9 @@ public class Database {
         });
     }
 
+    /**
+     * Interface permettant de savoir quand le chargement de l'utilisateur est terminé
+     */
     public interface OnUserLoaded{
         void Userloaded();
     }
