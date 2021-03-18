@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
 import com.example.futmarket.view.ActiviteFiltre;
+import com.example.futmarket.view.MesJoueurs;
 
 /**
  * Classe définissant l'affichage d'un joueur
@@ -65,9 +66,14 @@ public class ViewHolderJoueur extends RecyclerView.ViewHolder {
      * @param joueurCourant joueur associé à la photo
      */
     public void setJoueurCourant(Joueur joueurCourant){
-        if (nomJoueur.getContext().getClass() == ActiviteFiltre.class) {
+        if (nomJoueur.getContext().getClass() == ActiviteFiltre.class ) {
             photo.setOnClickListener(v -> {
                 ((ActiviteFiltre) (nomJoueur.getContext())).setJoueurEnCours(joueurCourant);
+            });
+        }
+        if(nomJoueur.getContext().getClass() == MesJoueurs.class){
+            photo.setOnClickListener(v -> {
+                ((MesJoueurs) (nomJoueur.getContext())).setJoueurEnCours(joueurCourant);
             });
         }
     }

@@ -26,6 +26,7 @@ public class MesJoueurs extends AppCompatActivity {
     private RecyclerView joueurs;
     private LinkedList<Joueur> list ;
     private Database db =new Database();
+    private Joueur joueurEnCours;
     private DatabaseReference ref = db.getRef("Users").child(db.getUserId()).child("joueurs");
     private  AdaptateurJoueur adapter;
 
@@ -60,5 +61,30 @@ public class MesJoueurs extends AppCompatActivity {
         super.onResume();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container,new InfosUtilisateur(),null).commit();
+    }
+
+    /**
+     * Retourne le joueur en cours
+     * @return joueur en cours
+     */
+    public Joueur getJoueurEnCours() {
+        return joueurEnCours;
+    }
+
+    /**
+     * Défini le joueur en cours
+     * @param joueurEnCours joueur en cours
+     */
+    public void setJoueurEnCours(Joueur joueurEnCours) {
+        if(this.joueurEnCours != joueurEnCours){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack("master")
+                    .replace(R.id.lesJoueurs,DetailsJoueurVente.class,null)
+                    .commit();
+        }
+        this.joueurEnCours = joueurEnCours;
+
     }
 }

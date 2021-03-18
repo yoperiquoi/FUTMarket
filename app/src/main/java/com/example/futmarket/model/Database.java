@@ -2,6 +2,7 @@ package com.example.futmarket.model;
 
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -111,6 +112,13 @@ public class Database {
      */
     public void acheterJoueur(Object obj){
         ajouterJoueur(obj);
+        listener = new OnUserLoaded() {
+            @Override
+            public void Userloaded() {
+                user=getUser();
+            }
+        };
+        fetchUser();
         int credits = getUser().getCredit() - ((Joueur)obj).getPrix() ;
         Utilisateur user = getUser();
         user.setCredit(credits);

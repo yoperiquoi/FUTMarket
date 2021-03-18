@@ -37,4 +37,6 @@
     <string name="valider">Valider</string>
     <string name="Annuler">Annuler</string>
     <string name="mdpInvalide">Le mot de passe ne doit être pas être vide vide</string>
+    <string name="vendre">Vendre</string>
+    <string name="ValiderVente">\"Valider vente pour \"</string>
 </resources>

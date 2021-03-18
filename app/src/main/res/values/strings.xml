@@ -47,4 +47,6 @@
     <string name="LoginVide">Le login ne doit pas être vide</string>
     <string name="deconnecte">Déconnecté</string>
     <string name="NonConnecte">Vous n\'êtes pas connecté</string>
+    <string name="vendre">Vendre</string>
+    <string name="ValiderVente">\"Valider vente pour \"</string>
 </resources>

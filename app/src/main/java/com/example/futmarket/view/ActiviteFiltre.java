@@ -1,6 +1,8 @@
 package com.example.futmarket.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
@@ -40,6 +41,10 @@ public class ActiviteFiltre extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activite_filtre);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
         RecyclerView laListView = findViewById(R.id.listView3);
         progress = findViewById(R.id.progress2);
@@ -114,7 +119,7 @@ public class ActiviteFiltre extends AppCompatActivity {
                     .beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack("master")
-                    .replace(R.id.listView3,DetailsJoueurAchat.class,null)
+                    .replace(R.id.container,DetailsJoueurAchat.class,null)
                     .commit();
         }
         this.joueurEnCours = joueurEnCours;
