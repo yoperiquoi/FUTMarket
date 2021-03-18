@@ -1,15 +1,12 @@
 package com.example.futmarket.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentContainerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 
 import com.example.futmarket.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Classe permettant de sélectionner un mode
@@ -22,14 +19,14 @@ public class ActiviteMode extends AppCompatActivity {
         setContentView(R.layout.activite_mode);
         selectionPack();
         selectionMarket();
-        mesjoueurs();
+        mesJoueurs();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container,new InfosUtilisateur(),null).commit();
+                .replace(R.id.container,new InfosUtilisateur(),null).commit();
 
 
     }
@@ -50,13 +47,13 @@ public class ActiviteMode extends AppCompatActivity {
      */
     private void selectionMarket(){
         Button market = findViewById(R.id.modeMarket);
-        market.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),ActiviteFiltre.class)));
+        market.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ActiviteMarche.class)));
     }
 
     /**
      * Permet de se diriger vers l'afficage de ces joueurs
      */
-    private void mesjoueurs(){
+    private void mesJoueurs(){
         Button joueurs = findViewById(R.id.joueurs);
         joueurs.setOnClickListener(v->startActivity(new Intent(getApplicationContext(),MesJoueurs.class)));
     }

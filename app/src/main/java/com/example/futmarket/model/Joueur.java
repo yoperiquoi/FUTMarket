@@ -3,6 +3,7 @@ package com.example.futmarket.model;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -135,4 +136,8 @@ public class Joueur implements Serializable {
         this.rarete = rarete;
     }
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return getName().equals(((Joueur)obj).getName());
+    }
 }

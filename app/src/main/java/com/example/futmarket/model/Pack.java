@@ -11,12 +11,12 @@ import java.util.Random;
 public class Pack implements Serializable {
     private String name;
     private Rarete rarete;
-    private Float prix;
+    private int prix;
     private List<Joueur> joueurs;
     private String description;
     private int nbJoueurs;
 
-    public Pack(String name, Rarete rarete, Float prix, List<Joueur> joueurs,String description) {
+    public Pack(String name, Rarete rarete, int prix, List<Joueur> joueurs,String description) {
         this.name = name;
         this.rarete = rarete;
         this.prix = prix;
@@ -24,7 +24,7 @@ public class Pack implements Serializable {
         this.description=description;
     }
 
-    public Pack(String name, Rarete rarete, Float prix, String description,int nbJoueurs) {
+    public Pack(String name, Rarete rarete, int prix, String description,int nbJoueurs) {
         this.name = name;
         this.rarete = rarete;
         this.prix = prix;
@@ -49,10 +49,14 @@ public class Pack implements Serializable {
     }
 
     public String getPrix() {
-        return prix.toString();
+        return Integer.toString(prix);
     }
 
-    public void setPrix(Float prix) {
+    public int getPrixPack(){
+        return prix;
+    }
+
+    public void setPrix(int prix) {
         this.prix = prix;
     }
 

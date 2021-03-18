@@ -5,13 +5,26 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_stade"
     android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
+        android:layout_height="wrap_content" />
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/lesJoueurs"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

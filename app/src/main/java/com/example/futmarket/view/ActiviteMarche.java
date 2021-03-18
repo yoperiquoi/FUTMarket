@@ -3,12 +3,11 @@ package com.example.futmarket.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,21 +15,19 @@ import android.widget.ProgressBar;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
-import com.example.futmarket.model.ManagerJoueur;
-import com.example.futmarket.model.MarchePack;
-import com.example.futmarket.model.Pack;
+import com.example.futmarket.controller.ManagerJoueur;
+import com.example.futmarket.controller.MarchePack;
 import com.example.futmarket.view.adaptateur.AdaptateurJoueur;
-import com.example.futmarket.view.adaptateur.AdaptateurMarche;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Classe reponsable de l'affichage du marché de joueur
  */
-public class ActiviteFiltre extends AppCompatActivity {
+public class ActiviteMarche extends AppCompatActivity {
     ManagerJoueur manager;
     List<Joueur> lesJoueurs ;
     private Joueur joueurEnCours;
@@ -40,7 +37,7 @@ public class ActiviteFiltre extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activite_filtre);
+        setContentView(R.layout.activite_marche);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,7 +54,7 @@ public class ActiviteFiltre extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
+        Log.d(TAG, "onResume: test");
         super.onResume();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container,new InfosUtilisateur(),null).commit();
@@ -123,7 +120,6 @@ public class ActiviteFiltre extends AppCompatActivity {
                     .commit();
         }
         this.joueurEnCours = joueurEnCours;
-
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.futmarket.view;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,20 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.futmarket.R;
-import com.example.futmarket.model.Database;
-import com.example.futmarket.model.Joueur;
-import com.example.futmarket.model.MarchePack;
-import com.example.futmarket.model.Pack;
+import com.example.futmarket.controller.Database;
 import com.example.futmarket.model.Utilisateur;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.GenericTypeIndicator;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 /**
  * Classe définissant l'affichage des infos des utilisateurs

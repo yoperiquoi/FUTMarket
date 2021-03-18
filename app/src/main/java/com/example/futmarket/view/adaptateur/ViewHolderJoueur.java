@@ -1,9 +1,7 @@
 package com.example.futmarket.view.adaptateur;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Joueur;
-import com.example.futmarket.view.ActiviteFiltre;
+import com.example.futmarket.view.ActiviteMarche;
 import com.example.futmarket.view.MesJoueurs;
 
 /**
@@ -66,9 +64,9 @@ public class ViewHolderJoueur extends RecyclerView.ViewHolder {
      * @param joueurCourant joueur associé à la photo
      */
     public void setJoueurCourant(Joueur joueurCourant){
-        if (nomJoueur.getContext().getClass() == ActiviteFiltre.class ) {
+        if (nomJoueur.getContext().getClass() == ActiviteMarche.class ) {
             photo.setOnClickListener(v -> {
-                ((ActiviteFiltre) (nomJoueur.getContext())).setJoueurEnCours(joueurCourant);
+                ((ActiviteMarche) (nomJoueur.getContext())).setJoueurEnCours(joueurCourant);
             });
         }
         if(nomJoueur.getContext().getClass() == MesJoueurs.class){

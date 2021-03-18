@@ -11,7 +11,6 @@
     <string name="selection_mode">Selection mode</string>
     <string name="market">Market</string>
     <string name="pack">Pack</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nompack">NomPack</string>
     <string name="prix">Prix</string>
@@ -49,4 +48,9 @@
     <string name="NonConnecte">Vous n\'êtes pas connecté</string>
     <string name="vendre">Vendre</string>
     <string name="ValiderVente">\"Valider vente pour \"</string>
+    <string name="PasCredit">Vous n\'avez pas les crédits pour ce joueur :</string>
+    <string name="achetePour">Joueur acheté pour :</string>
+    <string name="venduPour">\"vendu pour : \"</string>
+    <string name="creditInsuffisant">Vous n\'avez pas assez de crédit</string>
+    <string name="coutPack">Vous avez acheté ce pack pour :</string>
 </resources>

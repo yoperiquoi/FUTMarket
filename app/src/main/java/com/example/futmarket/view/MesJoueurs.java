@@ -1,15 +1,19 @@
 package com.example.futmarket.view;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.futmarket.R;
-import com.example.futmarket.model.Database;
+import com.example.futmarket.controller.Database;
 import com.example.futmarket.model.Joueur;
 import com.example.futmarket.view.adaptateur.AdaptateurJoueur;
 import com.google.firebase.database.DataSnapshot;
@@ -24,11 +28,11 @@ import java.util.LinkedList;
  */
 public class MesJoueurs extends AppCompatActivity {
     private RecyclerView joueurs;
-    private LinkedList<Joueur> list ;
+    public LinkedList<Joueur> list ;
     private Database db =new Database();
     private Joueur joueurEnCours;
     private DatabaseReference ref = db.getRef("Users").child(db.getUserId()).child("joueurs");
-    private  AdaptateurJoueur adapter;
+    public AdaptateurJoueur adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +41,10 @@ public class MesJoueurs extends AppCompatActivity {
         list = new LinkedList<>();
         joueurs = findViewById(R.id.lesJoueurs);
         adapter = new AdaptateurJoueur(list,getApplicationContext());
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         joueurs.setLayoutManager(new LinearLayoutManager(this));
         joueurs.setAdapter(adapter);
         ref.addValueEventListener(new ValueEventListener() {
@@ -46,7 +54,7 @@ public class MesJoueurs extends AppCompatActivity {
                     Joueur joueur = dataSnapshot.getValue(Joueur.class);
                     list.add(joueur);
                 }
-                adapter.notifyDataSetChanged();
+                adapter.refreshData(list);
             }
 
             @Override
@@ -81,10 +89,31 @@ public class MesJoueurs extends AppCompatActivity {
                     .beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack("master")
-                    .replace(R.id.lesJoueurs,DetailsJoueurVente.class,null)
+                    .replace(R.id.container,DetailsJoueurVente.class,null)
                     .commit();
         }
         this.joueurEnCours = joueurEnCours;
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

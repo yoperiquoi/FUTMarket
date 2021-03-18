@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.futmarket.R;
 import com.example.futmarket.model.Authentification;
-import com.example.futmarket.model.Database;
+import com.example.futmarket.controller.Database;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

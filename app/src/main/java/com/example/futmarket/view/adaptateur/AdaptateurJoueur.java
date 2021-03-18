@@ -40,7 +40,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
                 filteredList.addAll(lesJoueursAll);
             }else{
                 for(Joueur joueur : lesJoueursAll){
-                    if(joueur.getName().contains(constraint.toString().toLowerCase())){
+                    if(joueur.getName().toLowerCase().contains(constraint.toString().toLowerCase())){
                         filteredList.add(joueur);
                     }
                 }
@@ -62,7 +62,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
 
     public AdaptateurJoueur(LinkedList<Joueur> joueurs, Context applicationContext) {
         this.lesJoueurs=joueurs;
-        this.lesJoueursAll = new LinkedList<>();
+        this.lesJoueursAll = joueurs;
         context= applicationContext;
     }
 
@@ -148,6 +148,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
      */
     public void refreshData(List<Joueur> newJoueurs){
         lesJoueurs = newJoueurs;
+        lesJoueursAll = new LinkedList<>(newJoueurs);
         notifyDataSetChanged();
     }
 }

@@ -1,20 +1,18 @@
-package com.example.futmarket.model;
+package com.example.futmarket.controller;
 
-import android.net.Uri;
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
+import com.example.futmarket.R;
+import com.example.futmarket.model.Authentification;
+import com.example.futmarket.model.Joueur;
+import com.example.futmarket.model.Utilisateur;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.FirebaseUserMetadata;
-import com.google.firebase.auth.MultiFactor;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +21,6 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -52,7 +49,6 @@ public class Database {
         userId.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("toto", "onDataChange: "+snapshot.child("login").getValue());
                 if(login.equals(snapshot.child("login").getValue())){
                     userId.child("login").setValue(login);
                 }
@@ -110,23 +106,47 @@ public class Database {
      * Permet de acheter un joueur
      * @param obj joueur à acheter
      */
-    public void acheterJoueur(Object obj){
+    public void acheterJoueur(Object obj,View view){
         ajouterJoueur(obj);
         listener = new OnUserLoaded() {
             @Override
             public void Userloaded() {
-                user=getUser();
+                if (getUser().getCredit() - ((Joueur)obj).getPrix() < 0){
+                    Toast.makeText(view.getContext(), view.getContext().getString(R.string.PasCredit)+ Integer.toString(((Joueur)obj).getPrix()) +view.getContext().getString(R.string.credits) ,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int credits = getUser().getCredit() - ((Joueur)obj).getPrix() ;
+                Utilisateur user = getUser();
+                user.setCredit(credits);
+                Map<String,Object> map = new HashMap<>();
+                map.put(getUserId(),user);
+                database.getReference("Users").updateChildren(map);
+                Toast.makeText(view.getContext(), view.getContext().getString(R.string.achetePour)+ Integer.toString(((Joueur)obj).getPrix()) +view.getContext().getString(R.string.credits) ,Toast.LENGTH_SHORT).show();
             }
         };
         fetchUser();
-        int credits = getUser().getCredit() - ((Joueur)obj).getPrix() ;
-        Utilisateur user = getUser();
-        user.setCredit(credits);
-        Map<String,Object> map = new HashMap<>();
-        map.put(getUserId(),user);
-        database.getReference("Users").updateChildren(map);
     }
 
+    /**
+     * Méthode permettant de retirer des crédit à un utilisateur
+     * @param credit crédit a retirer
+     * @param context context de l'application
+     */
+    public void retirerCredits(int credit, Context context){
+        listener = new OnUserLoaded() {
+            @Override
+            public void Userloaded() {
+                int credits= getUser().getCredit() - credit;
+                Utilisateur user = getUser();
+                user.setCredit(credits);
+                Map<String,Object> map = new HashMap<>();
+                map.put(getUserId(),user);
+                database.getReference("Users").updateChildren(map);
+                Toast.makeText(context, context.getString(R.string.coutPack)+ Integer.toString(credit) +context.getString(R.string.credits) ,Toast.LENGTH_SHORT).show();
+            }
+        };
+        fetchUser();
+    }
     /**
      * Récupére l'utilisateur courant
      * @return utilisateur
@@ -153,6 +173,38 @@ public class Database {
                 }
             }
         });
+    }
+
+    /**
+     * Methode permettant de vendre un joueur
+     * @param joueur joueur a vendre
+     * @param v la vue permettant d'afficher les notification
+     */
+    public void vendreJoueur(Joueur joueur, View v) {
+        listener = new OnUserLoaded() {
+            @Override
+            public void Userloaded() {
+                HashMap<String,Joueur> lesJoueurs = user.getJoueurs();
+
+                for (Map.Entry<String, Joueur> entries :lesJoueurs.entrySet()){
+                    if (entries.getValue().equals(joueur)){
+                        String id=entries.getKey();
+                        lesJoueurs.remove(id);
+                        getUser().setJoueurs(lesJoueurs);
+
+                        Utilisateur user = getUser();
+                        user.setCredit(getUser().getCredit() + ((Joueur)joueur).getPrix());
+                        Map<String,Object> map = new HashMap<>();
+                        map.put(getUserId(),user);
+                        database.getReference("Users").updateChildren(map);
+
+                        Toast.makeText(v.getContext(), joueur.getName()+ v.getContext().getString(R.string.venduPour) +Integer.toString(((Joueur)joueur).getPrix()) +v.getContext().getString(R.string.credits) ,Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+            }
+        };
+        fetchUser();
     }
 
     /**

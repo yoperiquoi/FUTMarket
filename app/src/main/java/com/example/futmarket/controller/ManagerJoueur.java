@@ -1,18 +1,16 @@
-package com.example.futmarket.model;
+package com.example.futmarket.controller;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.futmarket.model.Joueur;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.GenericTypeIndicator;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /**

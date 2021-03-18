@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.futmarket.R;
-import com.example.futmarket.model.Database;
+import com.example.futmarket.controller.Database;
 import com.example.futmarket.model.Joueur;
 import com.example.futmarket.model.Pack;
 import com.example.futmarket.view.adaptateur.AdaptateurJoueur;
@@ -62,7 +62,7 @@ public class OuverturePack extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container,new InfosUtilisateur(),null)
+                .replace(R.id.container,new InfosUtilisateur(),null)
                 .commit();
     }
 

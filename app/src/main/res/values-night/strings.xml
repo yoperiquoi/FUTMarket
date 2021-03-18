@@ -12,7 +12,6 @@
     <string name="selection_mode">Selection mode</string>
     <string name="market">Market</string>
     <string name="pack">Pack</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nompack">NomPack</string>
     <string name="prix">Prix</string>
@@ -29,14 +28,28 @@
     <string name="valeur">Valeur : </string>
     <string name="note">Note Général : </string>
     <string name="valeurPack">Valeur du pack : </string>
+    <string name="email">Email</string>
+    <string name="joueurs">Mes joueurs</string>
     <string name="position">Position</string>
+    <string name="age">Age</string>
     <string name="taille">1m80</string>
     <string name="poid">80kg</string>
     <string name="acheter">Acheter</string>
     <string name="crediter">crédits ?</string>
+    <string name="ValiderAchat">Valider achat pour</string>
     <string name="valider">Valider</string>
     <string name="Annuler">Annuler</string>
     <string name="mdpInvalide">Le mot de passe ne doit être pas être vide vide</string>
+    <string name="emailInvalide">Le mail ne doit être pas être vide vide</string>
+    <string name="ErreurMdpEmail">L\'Email ou le Mot de passe ne sont pas corrects</string>
+    <string name="EmailVide">L\'email doit être non vide</string>
+    <string name="MdpVide">Mdp doit être non vide</string>
+    <string name="LoginVide">Le login ne doit pas être vide</string>
+    <string name="deconnecte">Déconnecté</string>
+    <string name="NonConnecte">Vous n\'êtes pas connecté</string>
     <string name="vendre">Vendre</string>
     <string name="ValiderVente">\"Valider vente pour \"</string>
+    <string name="PasCredit">Vous n\'avez pas les crédits pour ce joueur :</string>
+    <string name="achetePour">Joueur acheté pour :</string>
+    <string name="venduPour">\"vendu pour : \"</string>
 </resources>

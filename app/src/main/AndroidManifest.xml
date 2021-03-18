@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FUTMarket">
-        <activity android:name=".view.ActiviteFiltre" />
+        <activity android:name=".view.ActiviteMarche" />
         <activity android:name=".view.OuverturePack" />
         <activity android:name=".view.ActivitePrincipale">
             <intent-filter>

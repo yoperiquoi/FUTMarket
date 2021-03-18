@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.futmarket.R;
-import com.example.futmarket.model.MarchePack;
+import com.example.futmarket.controller.Database;
+import com.example.futmarket.controller.MarchePack;
 import com.example.futmarket.model.Pack;
-import com.example.futmarket.model.Stub;
 import com.example.futmarket.view.adaptateur.AdaptateurMarche;
 import com.example.futmarket.view.adaptateur.OnPackListener;
 
@@ -72,6 +72,23 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
 
     @Override
     public void OnClickPack(int position) {
+        Database db = new Database();
+
+        db.listener= new Database.OnUserLoaded() {
+            @Override
+            public void Userloaded() {
+                if(db.getUser().getCredit() < marchePack.getLesPacks().get(position).getPrixPack()){
+                    Toast.makeText(getApplicationContext(), getString(R.string.creditInsuffisant)+ Integer.toString(marchePack.getLesPacks().get(position).getPrixPack()) +getString(R.string.credits) ,Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(getIntent());
+                    return;
+                }
+                db.retirerCredits(marchePack.getLesPacks().get(position).getPrixPack(),getApplicationContext());
+            }
+
+        };
+
+        db.fetchUser();
 
         Intent intent = new Intent(this, OuverturePack.class);
 

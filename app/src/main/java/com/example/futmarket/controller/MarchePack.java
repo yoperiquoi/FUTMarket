@@ -1,6 +1,10 @@
-package com.example.futmarket.model;
+package com.example.futmarket.controller;
 import android.util.Log;
 import androidx.annotation.NonNull;
+
+import com.example.futmarket.model.Joueur;
+import com.example.futmarket.model.Pack;
+import com.example.futmarket.model.Rarete;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +31,7 @@ public class MarchePack implements Serializable {
      * @param joueurs joueurs présent dans le pack
      * @param description description du pack
      */
-    public void addPack(String name, Rarete rarete, Float prix,List<Joueur> joueurs,String description){
+    public void addPack(String name, Rarete rarete, int prix, List<Joueur> joueurs, String description){
         lesPacks.add(new Pack(name,rarete,prix,joueurs,description));
     }
 
@@ -44,10 +48,10 @@ public class MarchePack implements Serializable {
                 } else {
                     GenericTypeIndicator<List<Joueur>> t = new GenericTypeIndicator<List<Joueur>>() {};
                     List<Joueur> var = task.getResult().getValue(t);
-                    Pack pack1 = new Pack("Pack or",Rarete.Or,7500f,"Contient 3 joueurs",3);
-                    Pack pack2 = new Pack("Pack légendaire",Rarete.Legende,1000000f,"Contient 5 joueurs",5);
-                    Pack pack3 = new Pack("Pack argent",Rarete.Argent,2500f,"Contient 2 joueurs ",2);
-                    Pack pack4 = new Pack("Pack bronze",Rarete.Bronze,1000f,"Contient 1 joueur",1);
+                    Pack pack1 = new Pack("Pack or",Rarete.Or,1000000,"Contient 3 joueurs",3);
+                    Pack pack2 = new Pack("Pack légendaire",Rarete.Legende,500000,"Contient 5 joueurs",5);
+                    Pack pack3 = new Pack("Pack argent",Rarete.Argent,250000,"Contient 2 joueurs ",2);
+                    Pack pack4 = new Pack("Pack bronze",Rarete.Bronze,100000,"Contient 1 joueur",1);
                     pack1.generatePack(var);
                     pack2.generatePack(var);
                     pack3.generatePack(var);
