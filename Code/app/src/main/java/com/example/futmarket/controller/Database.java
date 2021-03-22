@@ -36,6 +36,9 @@ public class Database {
      */
     public OnUserLoaded listener;
 
+    /**
+     * initialisation de la claasse Database
+     */
     public Database(){
         database= FirebaseDatabase.getInstance();
     }

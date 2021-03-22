@@ -53,4 +53,5 @@
     <string name="venduPour">\"vendu pour : \"</string>
     <string name="creditInsuffisant">Vous n\'avez pas assez de crédit</string>
     <string name="coutPack">Vous avez acheté ce pack pour :</string>
+    <string name="retour">Retour</string>
 </resources>

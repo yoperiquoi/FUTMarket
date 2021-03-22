@@ -53,7 +53,7 @@ public class ActiviteConnexion extends AppCompatActivity {
         connect.setOnClickListener(v-> { // activation on clique sur le bouton
             String email= mEmail.getText().toString(); //recuperation du texte
             String mdp= mPassword.getText().toString(); //recuperation du texte
-            if(email.isEmpty() && mdp.isEmpty()){
+            if(email.isEmpty() && mdp.isEmpty()){ // si l'email ou le mot de passe sont vides on afiiche qu'il doivent etre non vides
                 mPassword.setError(getString(R.string.mdpInvalide));
                 mEmail.setError(getString(R.string.emailInvalide));
                 return;

@@ -66,6 +66,8 @@ public class ActiviteInscription extends AppCompatActivity {
      */
     private void seInscrire(){
         Button connect = findViewById(R.id.inscription); //on recherche le bouton pour valider l'inscription
+
+
         //Code pour vérifier l'inscription
 
         connect.setOnClickListener(v-> {
@@ -82,9 +84,8 @@ public class ActiviteInscription extends AppCompatActivity {
 
             mAuth.createUserWithEmailAndPassword(email,mdp).addOnCompleteListener(task -> { //on cree l'utilisateur depuis son email et son mot de passe
                 if(task.isSuccessful()){ //si l'utilisateur est bien cree on va sur l'activite de choix des modes
-                    db.AjoutUser(login);
-                    startActivity(new Intent(ActiviteInscription.this, ActiviteMode.class));
-                    finish();
+                    db.AjoutUser(login);// on ajout l'utilisateur dans la base de donnees
+                    jouer();
                 }
                 else{ // sinon  il y a une notification qui apparait
                     Toast.makeText(ActiviteInscription.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
@@ -129,7 +130,7 @@ public class ActiviteInscription extends AppCompatActivity {
 
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("818919349037-beq0hbotovvrf0qai5lo69mmbaqgurcj.apps.googleusercontent.com")//on demande le toket du client d'authenthification
+                .requestIdToken("818919349037-beq0hbotovvrf0qai5lo69mmbaqgurcj.apps.googleusercontent.com")//on donne le token de l'application pour pouvoir connecter le compte google a l'authentification de firebase
                 .requestEmail()//on demande l'email de l'utilisateur pour le connecter
                 .build(); // la creation de toutes les options pour se connecter a son compte google
         GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso); // on recupere l'utilisateur
@@ -140,17 +141,23 @@ public class ActiviteInscription extends AppCompatActivity {
         });
     }
 
+    /**
+     * la connexion via google au firebase
+     * @param requestCode le request code contenu dans le intent de connexion via google
+     * @param resultCode le code de retour donne par nous : 10
+     * @param data null
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == signInCode) {
-            Task<GoogleSignInAccount> signTask = GoogleSignIn.getSignedInAccountFromIntent(data);
+        if (requestCode == signInCode) { // on compare le code de retour et le code demandee
+            Task<GoogleSignInAccount> signTask = GoogleSignIn.getSignedInAccountFromIntent(data);  //on recupere le compte
             try{
                 GoogleSignInAccount account = signTask.getResult(ApiException.class);
                 AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
-                mAuth.signInWithCredential(authCredential).addOnCompleteListener(task ->{
-                    db.AjouterGoogle(user.getName());
-                    jouer();
+                mAuth.signInWithCredential(authCredential).addOnCompleteListener(task ->{  //on se connecte avec a la firebase
+                    db.AjouterGoogle(user.getName()); // ajour de user dans la base de donnee
+                    jouer(); //redirection vers le choix des modes
                 });
 
             }

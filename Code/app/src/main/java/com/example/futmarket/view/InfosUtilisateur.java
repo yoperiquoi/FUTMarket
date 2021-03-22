@@ -23,6 +23,11 @@ public class InfosUtilisateur extends Fragment {
         super(R.layout.infos_utilisateur);
     }
 
+    /**
+     * la creation du fragment des donnees de l'utilisateur
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

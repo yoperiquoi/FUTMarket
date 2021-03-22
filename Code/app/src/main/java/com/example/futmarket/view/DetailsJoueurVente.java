@@ -21,6 +21,9 @@ public class DetailsJoueurVente extends Fragment {
         super(R.layout.details_joueur_achat);
     }
 
+    /**
+     * la creation du fragment pour recuperer les informations de joueur a vendre et le vendre si on a envie
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

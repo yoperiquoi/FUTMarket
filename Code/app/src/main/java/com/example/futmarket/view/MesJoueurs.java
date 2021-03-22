@@ -1,8 +1,10 @@
 package com.example.futmarket.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +36,9 @@ public class MesJoueurs extends AppCompatActivity {
     private DatabaseReference ref = db.getRef("Users").child(db.getUserId()).child("joueurs");
     public AdaptateurJoueur adapter;
 
+    /**
+     * a la creation de l'activite on affiche les joueurs qui sont dans la base de donnees des utilisateurs
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +67,12 @@ public class MesJoueurs extends AppCompatActivity {
 
             }
         });
+        retour();
     }
 
+    /**
+     * a la continuation de l'activite on ajoute le fragment
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -96,6 +105,9 @@ public class MesJoueurs extends AppCompatActivity {
 
     }
 
+    /**
+     * la recherche des joueurs dans les joueurs de l'utilisateur
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -115,5 +127,16 @@ public class MesJoueurs extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * le retour a l'activite de choix des modes
+     */
+    public void retour() {
+        Button retour = findViewById(R.id.retour);
+        retour.setOnClickListener( v-> {
+            startActivity(new Intent(getApplicationContext(),ActiviteMode.class));
+            finish();
+        });
     }
 }
