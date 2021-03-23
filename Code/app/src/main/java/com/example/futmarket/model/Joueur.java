@@ -31,7 +31,20 @@ public class Joueur implements Serializable {
     private int prix;
     private String rarete;
 
-
+    /**
+     * initialisation d'un Joueur
+     * @param name du joueur
+     * @param age du joueur
+     * @param note du joueur
+     * @param position du joueur
+     * @param photo du joueur
+     * @param club du joueur
+     * @param drapeau du joueur
+     * @param taille du joueur
+     * @param poids du joueur
+     * @param prix du joueur
+     * @param rarete du joueur
+     */
     public Joueur(String name, int age, int note, String position, String photo, String club, String drapeau, String taille, String poids, int prix, String rarete) {
         this.name = name;
         this.age = age;
@@ -48,94 +61,107 @@ public class Joueur implements Serializable {
 
     public Joueur(){ }
 
+    /**
+     * getteur du nom du joueur
+     * @return nom
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * setteur du nom du joueur
+     * @param name du joueur
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * getteur de l'age du joueur
+     * @return age
+     */
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
+    /**
+     * getteur de la note du joueur
+     * @return note du joueur
+     */
     public int getNote() {
         return note;
     }
 
-    public void setNote(int note) {
-        this.note = note;
-    }
-
+    /**
+     * getteur de la position du joueur
+     * @return position du joueur
+     */
     public String getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
+    /**
+     * getteur de la photo du joueur
+     * @return photo du joueur
+     */
     public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
+    /**
+     * getteur du club du joueur
+     * @return club du joueur
+     */
     public String getClub() {
         return club;
     }
 
-    public void setClub(String club) {
-        this.club = club;
-    }
-
+    /**
+     * getteur de la nationalite du joueur
+     * @return la nationalite du joueur
+     */
     public String getDrapeau() {
         return drapeau;
     }
 
-    public void setDrapeau(String drapeau) {
-        this.drapeau = drapeau;
-    }
-
+    /**
+     * getteur de la taille du joueur
+     * @return la taille du joueur
+     */
     public String getTaille() {
         return taille;
     }
 
-    public void setTaille(String taille) {
-        this.taille = taille;
-    }
-
+    /**
+     * getteur du poids d'un joueur
+     * @return le poids du joueur
+     */
     public String getPoids() {
         return poids;
     }
 
-    public void setPoids(String poids) {
-        this.poids = poids;
-    }
-
+    /**
+     * getteur du prix du joueur
+     * @return prix du joueur
+     */
     public int getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
-        this.prix = prix;
-    }
-
+    /**
+     * getteur de la rarete du joueur ( bronze, argent ou or)
+     * @return la rarete du joueur
+     */
     public String getRarete() {
         return rarete;
     }
 
-    public void setRarete(String rarete) {
-        this.rarete = rarete;
-    }
-
+    /**
+     * comparateur du nom du joueur
+     * @param obj objet a comparer
+     * @return true ou false
+     */
     @Override
     public boolean equals(@Nullable Object obj) {
         return getName().equals(((Joueur)obj).getName());

@@ -13,6 +13,9 @@ import com.example.futmarket.R;
  */
 public class ActiviteMode extends AppCompatActivity {
 
+    /**
+     * la creation de l'activite de choix du mode
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

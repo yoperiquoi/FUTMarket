@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/NomPack"
         style="@style/CustomText"
@@ -33,7 +34,6 @@
         android:layout_height="wrap_content"
         style="@style/CustomText"
         android:text="@string/description" />
-
 
 
 </LinearLayout>

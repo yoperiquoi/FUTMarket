@@ -17,11 +17,18 @@ import com.example.futmarket.model.Joueur;
  */
 public class DetailsJoueurAchat extends Fragment {
 
+    /**
+     * l'initialisation d'un fragment DetailsJoueurAchat
+     */
     public DetailsJoueurAchat(){
         super(R.layout.details_joueur_achat);
     }
 
-
+    /**
+     * a la creation de la vue du fragment on affiche tout les donnees du joueur choisi et l'achat possible si l'utilisateur decide de faire ca
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

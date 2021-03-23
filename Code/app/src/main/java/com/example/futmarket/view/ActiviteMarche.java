@@ -34,6 +34,10 @@ public class ActiviteMarche extends AppCompatActivity {
     private AdaptateurJoueur adapter;
     private ProgressBar progress;
 
+    /**
+     * la creation de l'activite du marche
+     *@param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +58,6 @@ public class ActiviteMarche extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Log.d(TAG, "onResume: test");
         super.onResume();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container,new InfosUtilisateur(),null).commit();
@@ -77,6 +80,10 @@ public class ActiviteMarche extends AppCompatActivity {
         manager.getJoueurFromDatabase();
     }
 
+    /**
+     * la recherche d'un joueur
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);

@@ -37,6 +37,10 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
 
     private ProgressBar progress;
 
+    /**
+     * la creation de la fenetre d'application on met en place tous les parties graphiques
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,9 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
         laListView.setAdapter(adapter);
     }
 
+    /**
+     * a la continuation de l'activite on utilise le fragment
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -70,6 +77,10 @@ public class SelectionPack extends AppCompatActivity implements OnPackListener {
         marchePack.generatePacks();
     }
 
+    /**
+     * en le clique sur le pack pour obtenir les joueurs
+     * @param position la position du pack dans la liste des packs
+     */
     @Override
     public void OnClickPack(int position) {
         Database db = new Database();

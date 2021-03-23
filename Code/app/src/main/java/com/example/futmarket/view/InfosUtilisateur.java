@@ -1,5 +1,6 @@
 package com.example.futmarket.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,12 +23,18 @@ public class InfosUtilisateur extends Fragment {
         super(R.layout.infos_utilisateur);
     }
 
+    /**
+     * la creation du fragment des donnees de l'utilisateur
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         super.onResume();
         Database database = new Database();
         database.listener = new Database.OnUserLoaded() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void Userloaded() {
                 user = database.getUser();
