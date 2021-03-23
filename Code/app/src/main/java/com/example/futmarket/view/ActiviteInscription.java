@@ -32,7 +32,6 @@ public class ActiviteInscription extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Authentification user;
     private EditText mLogin, mPassword, mEmail;
-    private Button btn;
     TextView mConnect;
     private Database db;
     private SignInButton signIn; // le bouton de google
