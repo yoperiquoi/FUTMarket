@@ -36,7 +36,7 @@ public class MarchePack implements Serializable {
     }
 
     /**
-     * Permet de générer les packs
+     * Permet de générer les packs grâce au stub
      */
     public void generatePacks(){
         DatabaseReference reference = new Database().getRef("Joueurs");

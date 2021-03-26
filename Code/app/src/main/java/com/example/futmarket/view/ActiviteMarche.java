@@ -44,14 +44,14 @@ public class ActiviteMarche extends AppCompatActivity {
         setContentView(R.layout.activite_marche);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar); // On charge la barre de recherche
 
 
-        RecyclerView laListView = findViewById(R.id.listView3);
+        RecyclerView laListView = findViewById(R.id.listView3); //On charge la liste et la barre de progression
         progress = findViewById(R.id.progress2);
 
 
-        laListView.setLayoutManager(new LinearLayoutManager(this));
+        laListView.setLayoutManager(new LinearLayoutManager(this)); //Et enfin on défini l'adaptateur
         adapter = new AdaptateurJoueur(new LinkedList<>(),getApplicationContext());
         laListView.setAdapter(adapter);
     }

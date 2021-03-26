@@ -21,13 +21,14 @@ public class DetailsJoueurVente extends Fragment {
         super(R.layout.details_joueur_achat);
     }
 
+    MesJoueurs mesJoueurs;
     /**
      * la creation du fragment pour recuperer les informations de joueur a vendre et le vendre si on a envie
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MesJoueurs mesJoueurs = (MesJoueurs) getContext();
+        mesJoueurs = (MesJoueurs) getContext();
         Joueur joueur = mesJoueurs.getJoueurEnCours();
         ((TextView)view.findViewById(R.id.NomJoueurAchat)).setText(mesJoueurs.getJoueurEnCours().getName());
         ((TextView)view.findViewById(R.id.PositionJoueur)).setText(mesJoueurs.getJoueurEnCours().getPosition());
@@ -39,11 +40,13 @@ public class DetailsJoueurVente extends Fragment {
             @Override
             public void onClick(View v) {
                 new Database().vendreJoueur(joueur,v);
-                mesJoueurs.finish();
-                mesJoueurs.startActivity(mesJoueurs.getIntent());
+                mesJoueurs.list.remove(joueur);
+                mesJoueurs.adapter.refreshData(mesJoueurs.list);
             }
         });
     }
+
+
 
 
     

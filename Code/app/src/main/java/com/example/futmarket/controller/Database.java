@@ -48,8 +48,8 @@ public class Database {
      * @param login login de l'utilisateur
      */
     public void AjouterGoogle(String login){
-        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
-        userId.addValueEventListener(new ValueEventListener() {
+        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid()); //Récupére la référence des users
+        userId.addValueEventListener(new ValueEventListener() { //Ajoute le user à la bdd
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(login.equals(snapshot.child("login").getValue())){
@@ -73,10 +73,9 @@ public class Database {
      * @param login login de l'utilisateur
      */
     public void AjoutUser(String login){
-        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid());
-        userId.child("credit").setValue(1000000);
+        DatabaseReference userId=database.getReference("Users").child(auth.getCurrentUser().getUid()); // Récupération référence
+        userId.child("credit").setValue(1000000); //On défini les crédit et login de l'utilisateur
         userId.child("login").setValue(login);
-
     }
 
     /**
