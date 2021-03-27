@@ -54,7 +54,7 @@ public class MesJoueurs extends AppCompatActivity {
         joueurs.setAdapter(adapter);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) { // la recuperation des joueurs dans la liste des joueurs
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Joueur joueur = dataSnapshot.getValue(Joueur.class);
                     list.add(joueur);

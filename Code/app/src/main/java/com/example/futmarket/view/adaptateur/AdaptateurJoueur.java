@@ -33,7 +33,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
     private Context context;
     Filter filter = new Filter() {
         @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
+        protected FilterResults performFiltering(CharSequence constraint) { // on filtre la liste des joueurs
             List<Joueur> filteredList = new LinkedList<>();
 
             if (constraint.toString().isEmpty()){
@@ -53,7 +53,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
         }
 
         @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
+        protected void publishResults(CharSequence constraint, FilterResults results) { // on charge les joueurs filtres dans la liste de joueurs
             lesJoueurs.clear();
             lesJoueurs.addAll((Collection<? extends Joueur>) results.values);
             notifyDataSetChanged();
@@ -66,6 +66,10 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
         context= applicationContext;
     }
 
+    /**
+     * la creation de viewholder
+     * @return le viewholder du joueur
+     */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -73,20 +77,23 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
         return new ViewHolderJoueur(leLayout);
     }
 
+    /**
+     * on relie le viewholder avec l'adaptateur
+     */
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolderJoueur)holder).setJoueurCourant(lesJoueurs.get(position));
-        ((ViewHolderJoueur)holder).getNomJoueur().setText(lesJoueurs.get(position).getName());
-        ((ViewHolderJoueur)holder).getPrixJoueur().setText(context.getString(R.string.valeur)+(Integer.toString(lesJoueurs.get(position).getPrix()))+ context.getString(R.string.euro));
-        ((ViewHolderJoueur)holder).getOverall().setText(context.getString(R.string.note)+(Integer.toString(lesJoueurs.get(position).getNote())));
-        new DownloadImageTask(((ViewHolderJoueur)holder).getPhoto())
+        ((ViewHolderJoueur)holder).setJoueurCourant(lesJoueurs.get(position)); // on recupere le joueur et on le definit pour la view du joueur
+        ((ViewHolderJoueur)holder).getNomJoueur().setText(lesJoueurs.get(position).getName()); //  on affecte le nom de joueur a la view
+        ((ViewHolderJoueur)holder).getPrixJoueur().setText(context.getString(R.string.valeur)+(Integer.toString(lesJoueurs.get(position).getPrix()))+ context.getString(R.string.euro)); // on affecte la valeur du prix de joueur a la view
+        ((ViewHolderJoueur)holder).getOverall().setText(context.getString(R.string.note)+(Integer.toString(lesJoueurs.get(position).getNote()))); //  on affecte le rating de joueur a la view
+        new DownloadImageTask(((ViewHolderJoueur)holder).getPhoto()) // le chargement de la photo du joueur
                 .execute(lesJoueurs.get(position).getPhoto());
-        new DownloadImageTask(((ViewHolderJoueur)holder).getLogoClub())
+        new DownloadImageTask(((ViewHolderJoueur)holder).getLogoClub()) // le chargement de la photo du club du joueur
                 .execute(lesJoueurs.get(position).getClub());
-        new DownloadImageTask(((ViewHolderJoueur)holder).getDrapeau())
+        new DownloadImageTask(((ViewHolderJoueur)holder).getDrapeau()) // le chargement de la photo du drapeau de la pays du joueur
                 .execute(lesJoueurs.get(position).getDrapeau());
 
-        switch (lesJoueurs.get(position).getRarete()){
+        switch (lesJoueurs.get(position).getRarete()){ // on definit l'arriere plan de la carte du joueur
             case "Bronze":
                 holder.itemView.setBackground(context.getResources().getDrawable(R.drawable.bronze));
                 break;
@@ -102,11 +109,19 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
         }
     }
 
+    /**
+     * getteur de la taiile de la liste de joueur
+     * @return la taille de la liste
+     */
     @Override
     public int getItemCount() {
         return lesJoueurs.size();
     }
 
+    /**
+     * getteur du filter
+     * @return le filter des données filtrées
+     */
     @Override
     public Filter getFilter() {
         return filter;
@@ -146,7 +161,7 @@ public class AdaptateurJoueur extends RecyclerView.Adapter implements Filterable
      * Permet de notifier la liste d'un changement de données
      * @param newJoueurs nouvelle liste
      */
-    public void refreshData(List<Joueur> newJoueurs){
+    public void refreshData(List<Joueur> newJoueurs){ //on change la liste des joueurs
         lesJoueurs = newJoueurs;
         lesJoueursAll = new LinkedList<>(newJoueurs);
         notifyDataSetChanged();

@@ -28,7 +28,7 @@ public class ManagerJoueur {
         DatabaseReference reference = new Database().getRef("Joueurs");
 
 
-        Task<DataSnapshot> task = reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        Task<DataSnapshot> task = reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() { // on recupere les joueurs de la bdd
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
