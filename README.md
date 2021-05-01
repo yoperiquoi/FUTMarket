@@ -1,4 +1,21 @@
-Yoann PERIQUOI, Maxim POZDNYAKOV B2 Conception d'application mobile
+Yoann PERIQUOI, Maxim POZDNYAKOV B2 Conception d'application mobile DUT Informatique de Clermont-Ferrand
+
+Application mobile Android développé en Java sous environnement Android Studio.
+
+Contexte : 
+Dans le cadre de notre matière de conception d’application mobile nous avons eu à réaliser
+une application mobile en duo en 7 semaines. Nous avons choisi comme sujet, le football, et plus
+particulièrement les joueurs de football. Nous avons voulu créer une application du style « Ligue
+fantasy » ou du mode Fifa Ultimate Team de Fifa qui est un jeu où les participants endossent le rôle de
+propriétaires d'équipes sportives. Le joueur a donc l’objectif de collectionner tous les footballeurs qui
+sont représenté par des cartes de jeu. Pour cela, la principale méthode pour acquérir des joueurs est
+d’ouvrir des packs ou paquet de cartes. Evidemment les paquets de cartes sont donnés en échange de
+crédits. Ces crédits peuvent être ensuite obtenu en revendant les joueurs possédés. De plus, si vous
+recherchez un joueur en particulier, il peut être retrouvé dans la boutique. Il vous sera donné en
+échange de crédits. Il vous faudra donc ouvrir des paquets, pour ensuite vendre les joueurs obtenus
+pour acheter les joueurs de vos rêves et collectionner tous les joueurs en ouvrant encore une fois des
+paquets. Tout cela pour un objectif, être le plus grand collectionneur de FUT Market.
+
 
 Veuillez retrouver tout le fichiers de documentation dans le fichier documentation qui contient :
 	- un diagramme de classe
