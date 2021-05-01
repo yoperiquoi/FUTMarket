@@ -1,8 +1,8 @@
-#Yoann PERIQUOI, Maxim POZDNYAKOV B2 Conception d'application mobile DUT Informatique de Clermont-Ferrand
+# Yoann PERIQUOI, Maxim POZDNYAKOV B2 Conception d'application mobile DUT Informatique de Clermont-Ferrand
 
-##Application mobile Android développé en Java sous environnement Android Studio.
+## Application mobile Android développé en Java sous environnement Android Studio.
 
-###Contexte : 
+### Contexte : 
 Dans le cadre de notre matière de conception d’application mobile nous avons eu à réaliser
 une application mobile en duo en 7 semaines. Nous avons choisi comme sujet, le football, et plus
 particulièrement les joueurs de football. Nous avons voulu créer une application du style « Ligue
@@ -31,7 +31,7 @@ La principale fonctionnalités intéressante à observer sont la connexion en an
 A noter que cette application ne peut pas être déployé sur le PlayStore car la plupart des éléments graphiques ne nous appartiennent pas.
 Les design des cartes proviennent de Fifa, les joueurs de la base de données ont été récupéré à partir d'un site web...
 
-###Notice pour jouer :
+### Notice pour jouer :
 
 Pour jouer vous êtes obliger de créer un compte car toutes vos données sont stockées en ligne.
 Vous avez donc le choix entre un compte Google ou bien un email anonyme pour créer votre compte.
